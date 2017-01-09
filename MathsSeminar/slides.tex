@@ -1,0 +1,116 @@
+\documentclass[%
+pdf,
+%nocolorBG,
+colorBG,
+slideColor,
+%slideBW,
+%draft,
+%frames
+azure
+%contemporain
+%nuancegris
+%troispoints
+%lignesbleues
+%darkblue
+%alienglow
+%autumn
+]{prosper}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{slide}{Partial orders and Posets}
+
+A relation $\leq$ is called a partial order on a set $S$ if 
+\begin{enumerate}
+\item $x \leq x\;, \forall x \in S$.
+\item $x \leq y$ and $y \leq x$ imply $x=y$.
+\item $x \leq y$ and $y \leq z$ imply $x \leq z$.
+\end{enumerate}
+$(S,\leq)$ is called a partially ordered set or a poset.\\
+\bigskip
+$S$ is called a chain if $\forall x\,,y \in S$ we have either $x\leq y$ or $y\leq x$.\\
+\bigskip
+$S$ is called an antichain if $x\leq y \Rightarrow x=y\;\; \forall x,y \in S$.
+\end{slide}
+
+\begin{slide}{Lattices and Complete lattices}
+Let $P$ be a partially ordered set, then $P$ is a lattice if $\forall x,y \in P$, $x \vee y = \sup\{x,y\}$ and $x \wedge y = \inf\{x,y\}$ exist in P.\\
+\bigskip
+$P$ is a complete lattice if $\forall S \subseteq P$, $\bigvee S$ and $\bigwedge S$ exist in $P$.\\
+\bigskip
+$\phi \neq M \subseteq P$ is a sublattice of $P$ if $\forall a,b \in M$, $a \vee b$ and $a \wedge b$ are also in $M$.\\
+\bigskip
+$\top$ is the top element of P if $\forall x \in P,\; x \leq \top$. $\bot$ is the bottom of $P$ if $\forall x \in P,\; x \geq \bot$.
+\end{slide}
+
+\begin{slide}{Order-preserving maps}
+Let $P,\;Q$ be partially ordered sets, a map $\varphi : P \rightarrow Q$ is order-preserving if \\
+\[x \leq y \in P \Rightarrow \varphi (x) \leq \varphi (y) \in Q\] If $\varphi$ is from $P$ to itself then $\varphi$ is called a self-map on P. \\
+\bigskip
+Fixpoint: given a partially ordered set $P$ and $F$ is a self-map on $P$, then $x \in P$ is a fixpoint for $F$ if $F(x)=x$.
+\end{slide}
+
+\begin{slide}{Knaster-Tarski Theorem}
+Let $L$ be a complete lattice and $F:L\rightarrow L$ an order-preserving self-map on $L$. Then
+\[ \alpha = \bigvee \{x \in L|x\leq F(x)\} \] is a fixpoint of $F$. Futher it is the greatest fixpoint of $F$.
+\[ \beta = \bigwedge \{ x \in L | x \geq F(x)\} \] is the least fixpoint of $F$.
+\end{slide}
+
+\begin{slide}{CPOs}
+Directed sets: Let $P$ be a partially ordered set, $\phi \neq S \subseteq P$, then $S$ is directed if $\forall x,y \in S$, $\exists z \in S$ s.t. $z \in \{x,y\}^u$.\\
+\bigskip
+CPOs: Let $P$ be a partially ordered set, then $P$ is a CPO if 
+\begin{enumerate}
+\item $P$ has a bottom element $\bot$.
+\item $\bigsqcup D$ exists for each directed subset $D$ of $P$.
+\end{enumerate}
+\bigskip
+SubCPOs: Let $P$ be a CPO and $Q \subseteq P$, then $Q$ is a subCPO of $P$ if
+\begin{enumerate}
+\item $\bot \in Q$.
+\item for all directed subset $D$ of $Q$, $\bigsqcup_P D \in Q$.
+\end{enumerate}
+\end{slide}
+
+\begin{slide}{Continuous maps}
+Definition : Let $P,Q$ be CPOs, then the map $\varphi :P \rightarrow Q$ is continuous if for all directed subset $D$ of $P$, $\varphi (D)$ is directed in $Q$ and $\varphi (\bigsqcup D) = \bigsqcup \varphi (D)$.\\
+\bigskip
+Lemma: Let $P,Q$ be CPOs and $\varphi : P \rightarrow Q$, then $\varphi$ is order-preserving iff for all directed set $D$ in $P$, we have $\bigsqcup \varphi (D) \leq \varphi(\bigsqcup D)$.\\
+\bigskip
+Corollary: If $\varphi$ is continuous then it is order-preserving.   
+\end{slide}
+
+\begin{slide}{Fixpoint Theorems}
+\begin{enumerate}
+\item Let $P$ be a CPO, $F$ an order-preserving self-map on $P$, define $\alpha = \bigsqcup_{n \geq 0}F^n(\bot)$. Then 
+\begin{enumerate}
+\item if $\alpha$ is a fixpoint for $F$, then it is the least fixpoint.
+\item if $F$ is continuous, then it has the least fixpoint which equals to $\alpha$.
+\end{enumerate}
+\item Let $P$ be a CPO and $F$ an order-preserving self-map on $P$. Then $F$ has a least fixpoint.
+\end{enumerate}
+\end{slide}
+
+\begin{slide}{Fixpoint Theorem Cont.}
+Increasing maps: Let $P$ be a CPO, then $F : P \rightarrow P$ is increasing if 
+\[ \forall x \in P, x \leq F(x) \]\\
+\bigskip
+Theorem: Let $P$ be a CPO and $F$ an increasing self-map on $P$, then $F$ has a fixpoint.\\
+\bigskip
+Note: Here we can not say that $F$ has a least fixpoint, in fact not even a minimal fixpoint.
+\end{slide}
+
+\begin{slide}{Interesting results}
+Theorem: Let $P$ be an partially ordered set. Then
+\begin{enumerate}
+\item If $P$ is a lattice and every order-preserving map $F:P\rightarrow P$ has a fixpoint, then $P$ is complete.
+\item If every order-preserving map $F:P \rightarrow P$ has a least fixpoint, then $P$ is a CPO.
+\end{enumerate}
+\end{slide}
+
+\begin{slide}{Scott Topology}
+Let $P$ be a CPO, let $\mathcal{F}$ be the collection of sets $U \in O(P)$ such that $\bigsqcup D \in U$ whenever $D$ is a directed subset of $U$. Then $\mathcal{F}$ is a topology on $P$ and $U \in \mathcal{F}$ are closed sets.\\
+\bigskip
+Theorem: Let $P, Q$ be CPOs and topplogized as above, then the map $\varphi :P \rightarrow Q$ is topologically continuous iff it is continuous in the CPO sense.
+\end{slide} 
+\end{document}

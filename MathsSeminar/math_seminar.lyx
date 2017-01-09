@@ -1,0 +1,7075 @@
+#LyX 1.5.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass amsart
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing onehalf
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lattices, CPOs and Fixpoint theorems
+\end_layout
+
+\begin_layout Author
+Li Lin ID:0300211
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Section
+Background
+\end_layout
+
+\begin_layout Definition
+A relation
+\begin_inset Formula $\preceq$
+\end_inset
+
+ is a partial order on a set 
+\emph on
+S
+\emph default
+ if 
+\begin_inset Formula $\forall\; a,\, b,\, c\,\in S,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a\preceq a$
+\end_inset
+
+ \InsetSpace ~
+(reflexivity) 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a\preceq b\;\&\; b\preceq a\Rightarrow a=b$
+\end_inset
+
+ \InsetSpace ~
+(anti-symmetry)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a\,\preceq\, b\;\&\; b\,\preceq\, a\;\Rightarrow\, a=b$
+\end_inset
+
+ \InsetSpace ~
+(transitivity) 
+\end_layout
+
+\begin_layout Standard
+And 
+\emph on
+
+\begin_inset Formula $(S,\preceq)$
+\end_inset
+
+
+\emph default
+ is called a partially ordered set.
+ 
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set, then the dual of 
+\begin_inset Formula $S$
+\end_inset
+
+, denoted by 
+\begin_inset Formula $S^{\partial}$
+\end_inset
+
+, is a partially ordered set such that if 
+\begin_inset Formula $a\,\leq\, b$
+\end_inset
+
+ in 
+\begin_inset Formula $S$
+\end_inset
+
+ then 
+\begin_inset Formula $a\,\geq\, b$
+\end_inset
+
+ in 
+\begin_inset Formula $S^{\partial}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We can use similar idea to define the dual statement of a statement 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ about partially ordered sets: given A statement 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ about partially ordered sets, then the dual statement 
+\begin_inset Formula $\Phi^{\partial}$
+\end_inset
+
+ is obtained by replacing every occurrence of 
+\begin_inset Formula $\leq$
+\end_inset
+
+ with 
+\begin_inset Formula $\geq$
+\end_inset
+
+.
+ For example, consider the statement 
+\begin_inset Formula $\Phi$
+\end_inset
+
+: let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set, 
+\begin_inset Formula $a\,\in\, X$
+\end_inset
+
+ and 
+\begin_inset Formula $A\subseteq S$
+\end_inset
+
+ , then 
+\begin_inset Formula $x\,\in\, A$
+\end_inset
+
+ if 
+\begin_inset Formula $x\,\leq\, a$
+\end_inset
+
+.
+ then its dual statement would be 
+\begin_inset Quotes eld
+\end_inset
+
+let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set, 
+\begin_inset Formula $a\,\in\, X$
+\end_inset
+
+ and 
+\begin_inset Formula $A\subseteq X$
+\end_inset
+
+, then 
+\begin_inset Formula $x\,\in\, A$
+\end_inset
+
+ if 
+\begin_inset Formula $x\,\geq\, a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{dual}[thm]{The Dual Priciple}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{dual} Given a statement $
+\backslash
+Phi$ which is true in all partially ordered sets, then its dual statement
+ $
+\backslash
+Phi^{
+\backslash
+partial}$ is also ture in all partially ordered sets  
+\backslash
+end{dual}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be a subset of 
+\begin_inset Formula $S$
+\end_inset
+
+, then 
+\begin_inset Formula $a\,\in\, Q$
+\end_inset
+
+ if a 
+\emph on
+maxima
+\emph default
+l element of 
+\begin_inset Formula $Q$
+\end_inset
+
+ if 
+\begin_inset Formula $x\,\in\, Q$
+\end_inset
+
+, 
+\begin_inset Formula $a\,\leq\, x$
+\end_inset
+
+(
+\begin_inset Formula $a\,\geq\, x)$
+\end_inset
+
+ implies 
+\begin_inset Formula $a\,=\, x$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $a$
+\end_inset
+
+ is called a 
+\emph on
+greatest
+\emph default
+ element if 
+\begin_inset Formula $\forall\, x\,\in\, Q$
+\end_inset
+
+, 
+\begin_inset Formula $x\,\leq\, a$
+\end_inset
+
+(
+\begin_inset Formula $x\,\geq\, a)$
+\end_inset
+
+.
+ Dually, 
+\begin_inset Formula $a$
+\end_inset
+
+ is called a 
+\emph on
+minimal/least
+\emph default
+ element.
+ Clearly the greatest element is always a maximal element, then the converse
+ may not be true because there may exist some elements that are not related
+ to 
+\begin_inset Formula $a$
+\end_inset
+
+ in the set.
+ An 
+\emph on
+upper bound
+\emph default
+ 
+\begin_inset Formula $y\,\in\, S$
+\end_inset
+
+ of 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an element such that 
+\begin_inset Formula $\forall\, x\,\in\, Q$
+\end_inset
+
+, 
+\begin_inset Formula $x\,\leq\, y$
+\end_inset
+
+, dually 
+\begin_inset Formula $y$
+\end_inset
+
+ is called a lower bound of 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ And let 
+\begin_inset Formula $Q^{u}$
+\end_inset
+
+ be the set of upper bound of 
+\begin_inset Formula $Q$
+\end_inset
+
+, then 
+\begin_inset Formula $y$
+\end_inset
+
+ is called the supremum of 
+\begin_inset Formula $Q$
+\end_inset
+
+ if 
+\begin_inset Formula $y$
+\end_inset
+
+ is the least element of 
+\begin_inset Formula $Q^{u}$
+\end_inset
+
+, dually 
+\begin_inset Formula $y$
+\end_inset
+
+ is called the infimum of 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Let S be a partially ordered set, then S is a chain (or totally ordered
+ set) if 
+\begin_inset Formula $\forall\; a,\, b\in S,$
+\end_inset
+
+ either 
+\begin_inset Formula $a\,\leqslant\, b\,\,\, or\,\,\, b\,\leqslant\, a$
+\end_inset
+
+.
+ 
+\begin_inset Formula $S$
+\end_inset
+
+ is called an antichain if 
+\begin_inset Formula $a\,\leqslant\, b$
+\end_inset
+
+ iff 
+\begin_inset Formula $a\,=\, b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set and 
+\begin_inset Formula $a\,,b\,\in S$
+\end_inset
+
+, then 
+\begin_inset Formula $a$
+\end_inset
+
+ is said to be covered by 
+\begin_inset Formula $b$
+\end_inset
+
+ , denoted by 
+\begin_inset Formula $a\,\leftarrowtail\, b$
+\end_inset
+
+, if 
+\begin_inset Formula $a\,<\, b$
+\end_inset
+
+ and 
+\begin_inset Formula $a\,\leqslant\, c\,<b\,\Longrightarrow\, a\,=\, c$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a partially ordered set, and 
+\begin_inset Formula $Q\subseteq S$
+\end_inset
+
+, then 
+\begin_inset Formula $Q$
+\end_inset
+
+ is a down-set or order ideal if 
+\begin_inset Formula $x\,\in\, Q$
+\end_inset
+
+, 
+\begin_inset Formula $y\,\in\, S$
+\end_inset
+
+ and 
+\begin_inset Formula $y\leq x$
+\end_inset
+
+ then 
+\begin_inset Formula $y\,\in\, Q$
+\end_inset
+
+.
+ Dually 
+\begin_inset Formula $Q$
+\end_inset
+
+ is called a up-set or order filter.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be partially ordered sets, then a map 
+\begin_inset Formula $\varphi\,:\, P\rightarrow Q$
+\end_inset
+
+ is said to be
+\end_layout
+
+\begin_layout Enumerate
+an order-preserving if 
+\begin_inset Formula $x\,\leq\, y$
+\end_inset
+
+ in 
+\begin_inset Formula $P$
+\end_inset
+
+ implies 
+\begin_inset Formula $\varphi(x)\,\leq\,\varphi(y)$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+an order-embedding if 
+\begin_inset Formula $x\,\leq\, y$
+\end_inset
+
+ in 
+\begin_inset Formula $P$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\varphi(x)\,\leq\,\varphi(y)$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+an order-isomorphism if it is an order-embedding and bijective.
+\end_layout
+
+\begin_layout Section
+Lattices
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a non-empty ordered set, if 
+\begin_inset Formula $\forall\, x,y\,\in\, P$
+\end_inset
+
+, 
+\begin_inset Formula $x\,\vee\, y=\sup\{x,y\}$
+\end_inset
+
+ and 
+\begin_inset Formula $x\,\wedge\, y=\inf\{x,y\}$
+\end_inset
+
+ exist in P, then 
+\begin_inset Formula $P$
+\end_inset
+
+ is called a lattice.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ is a complete lattice if 
+\begin_inset Formula $\forall\, S\subseteq P$
+\end_inset
+
+, 
+\begin_inset Formula $\bigvee S$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigwedge S$
+\end_inset
+
+ exist in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+Alternatively, a lattice can be considered to be a algebraic structure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{altdef}[thm]{Alternative definition of lattices}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{altdef} Let S be a partially ordered set and $
+\backslash
+vee$ and $
+\backslash
+wedge$ be two binary operators defined on S such that:
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate} 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $(a 
+\backslash
+vee b) 
+\backslash
+vee c = a 
+\backslash
+vee (b 
+\backslash
+vee c)$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $(a 
+\backslash
+wedge b) 
+\backslash
+wedge c = a 
+\backslash
+wedge (b 
+\backslash
+wedge c)$ 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+vee b = b 
+\backslash
+vee a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+wedge b = b 
+\backslash
+wedge a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+vee a = a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+wedge a = a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+vee (a 
+\backslash
+wedge b) = a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+wedge (a 
+\backslash
+vee b) = a$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\backslash
+end{altdef}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is can be proved that the above two definitions are identical.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{cl}[thm]{Connecting Lemma}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{cl} Let $L$ be a lattice and $a,b 
+\backslash
+, 
+\backslash
+in 
+\backslash
+, L$, then
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+, 
+\backslash
+leq 
+\backslash
+, b$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+vee b = b$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+wedge b = a$ 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+are equivalent.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{cl}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(1)
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+(2), 
+\begin_inset Formula $a\leq b$
+\end_inset
+
+ and 
+\begin_inset Formula $b\leq b$
+\end_inset
+
+ imply 
+\begin_inset Formula $b\in\{a,b\}^{u}$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $b\leq x\;\;\forall x\in\{a,b\}^{u}\Rightarrow b=a\vee b$
+\end_inset
+
+.
+ (2)
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+(3), 
+\begin_inset Formula $a\vee b=b\Rightarrow a\leq b\Rightarrow a$
+\end_inset
+
+ is a lower bound for 
+\begin_inset Formula $\{a,b\}$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $y\leq a$
+\end_inset
+
+ for all lower bound 
+\begin_inset Formula $y$
+\end_inset
+
+ of 
+\begin_inset Formula $\{a,b\}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $a=a\wedge b$
+\end_inset
+
+.
+ (3)
+\begin_inset Formula $\Rightarrow(1)$
+\end_inset
+
+ is trivial.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a lattice, 
+\begin_inset Formula $a,b,c,d\,\in\, P$
+\end_inset
+
+, then 
+\end_layout
+
+\begin_layout Lemma
+1.
+ 
+\begin_inset Formula $a\,\leq\, b$
+\end_inset
+
+ implies 
+\begin_inset Formula $a\vee c\,\leq\, b\vee c$
+\end_inset
+
+ and 
+\begin_inset Formula $a\wedge c\,\leq\, b\wedge c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+2.
+ 
+\begin_inset Formula $a\,\leq\, b$
+\end_inset
+
+ and 
+\begin_inset Formula $c\,\leq\, d$
+\end_inset
+
+ implies 
+\begin_inset Formula $a\vee c\,\leq\, b\vee d$
+\end_inset
+
+ and 
+\begin_inset Formula $a\wedge c\,\leq\, b\wedge d$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(1) consider 
+\begin_inset Formula $b\vee c$
+\end_inset
+
+, 
+\begin_inset Formula $b\:,c\leq b\vee c\Rightarrow a\leq b\leq b\vee c$
+\end_inset
+
+ and 
+\begin_inset Formula $c\leq b\vee c$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $b\vee c\in\{a,c\}^{u}$
+\end_inset
+
+, then 
+\begin_inset Formula $a\vee c\leq b\vee c$
+\end_inset
+
+.
+ Now consider 
+\begin_inset Formula $a\wedge c$
+\end_inset
+
+, 
+\begin_inset Formula $a,\, c\geq a\wedge c\Rightarrow b\,,c\geq a\wedge c$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $a\wedge c$
+\end_inset
+
+ is a lower bound for 
+\begin_inset Formula $\{b\;,c\}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $a\wedge c\leq b\wedge c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+(2) Consider 
+\begin_inset Formula $b\vee d$
+\end_inset
+
+, we have 
+\begin_inset Formula $a\leq b\leq b\vee d$
+\end_inset
+
+ and 
+\begin_inset Formula $c\leq d\leq b\vee d$
+\end_inset
+
+, therefore, 
+\begin_inset Formula $b\vee d$
+\end_inset
+
+ is a upper bound for 
+\begin_inset Formula $\{a,c\}$
+\end_inset
+
+, hence 
+\begin_inset Formula $a\vee c\leq b\vee d$
+\end_inset
+
+.
+ Now consider 
+\begin_inset Formula $a\wedge c\leq a,\, c$
+\end_inset
+
+, then 
+\begin_inset Formula $a\wedge c\leq b,\, d$
+\end_inset
+
+, then 
+\begin_inset Formula $a\wedge c$
+\end_inset
+
+ is a lower bound for 
+\begin_inset Formula $\{b,d\}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $a\wedge c\leq b\wedge d$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $L$
+\end_inset
+
+ be a lattice, then 
+\begin_inset Formula $L$
+\end_inset
+
+ has a 
+\emph on
+\noun on
+one 
+\emph default
+\noun default
+if 
+\begin_inset Formula $\exists\,1\,\in\, L$
+\end_inset
+
+ such that 
+\begin_inset Formula $\forall\, a\,\in\, L$
+\end_inset
+
+, 
+\begin_inset Formula $a\wedge1\,=\, a$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+ has a 
+\emph on
+\noun on
+zero 
+\emph default
+\noun default
+if 
+\begin_inset Formula $\exists\,0\,\in\, L$
+\end_inset
+
+ such that 
+\begin_inset Formula $a\vee0\,=\, a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Complete lattices have both 1 and 0.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a complete lattice, then 
+\begin_inset Formula $\forall S\subseteq P$
+\end_inset
+
+, 
+\begin_inset Formula $\bigvee S$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Now consider 
+\begin_inset Formula $\textrm{S=\O}\subseteq P$
+\end_inset
+
+ and let 
+\begin_inset Formula $a\in P$
+\end_inset
+
+ be any element.
+ Then we can say that 
+\begin_inset Formula $\forall,x\in\textrm{\O},$
+\end_inset
+
+
+\begin_inset Formula $x\leq a$
+\end_inset
+
+, because there is no element 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $\textrm{\O}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x>a$
+\end_inset
+
+ or 
+\begin_inset Formula $x$
+\end_inset
+
+ is not related to 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Hence, we have 
+\begin_inset Formula $P=\textrm{\O}^{u}$
+\end_inset
+
+.
+ since 
+\begin_inset Formula $\bigvee\textrm{\O}=\sup\{\textrm{\O\}}$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $P$
+\end_inset
+
+ has a bottom element 0.
+ 
+\end_layout
+
+\begin_layout Proof
+Similarly, we can prove that 
+\begin_inset Formula $P$
+\end_inset
+
+ has a top element 1.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $L$
+\end_inset
+
+ be a lattice and 
+\begin_inset Formula $\textrm{\O}\neq M\subseteq L$
+\end_inset
+
+, them 
+\begin_inset Formula $M$
+\end_inset
+
+ is a sublattice of 
+\begin_inset Formula $L$
+\end_inset
+
+ if 
+\begin_inset Formula $\forall\, a,b\,\in M$
+\end_inset
+
+, 
+\begin_inset Formula $a\vee b\in M$
+\end_inset
+
+ and 
+\begin_inset Formula $a\wedge b\in M$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+It is possible that 
+\begin_inset Formula $M$
+\end_inset
+
+ itself is a lattice but is not a sublattice of 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $L,\: K$
+\end_inset
+
+ be lattices, a map 
+\begin_inset Formula $f\,:\, L\rightarrow K$
+\end_inset
+
+ is said to be a homomorphism if 
+\begin_inset Formula $f(a\vee b)=f(a)\vee f(b)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(a\wedge b)=f(a)\wedge f(b)\;\;\forall a,b\in L$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $f$
+\end_inset
+
+ is an isomorphism if 
+\begin_inset Formula $f$
+\end_inset
+
+ is bijective.
+\end_layout
+
+\begin_layout Lemma
+f(L) is a sublattice of K
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x,y\in f(L)$
+\end_inset
+
+, then 
+\begin_inset Formula $\exists a,b\in L$
+\end_inset
+
+ such that 
+\begin_inset Formula $f(a)=x$
+\end_inset
+
+ and 
+\begin_inset Formula $f(b)=y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Now consider 
+\begin_inset Formula $x\vee y=f(a)\vee f(b)$
+\end_inset
+
+, since 
+\begin_inset Formula $f$
+\end_inset
+
+ is a homomorphism, we have 
+\begin_inset Formula $f(a)\vee f(b)=f(a\vee b)\in f(L)$
+\end_inset
+
+, therefore 
+\begin_inset Formula $x\vee y\in f(L)$
+\end_inset
+
+.
+ Similarly, we can prove that 
+\begin_inset Formula $x\wedge y\in f(L)$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $f(L)$
+\end_inset
+
+ is a sublattice of 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{lem} Let $L, 
+\backslash
+, K$ be lattices and let $f:
+\backslash
+, L
+\backslash
+rightarrow K$ be a map.
+ Then the following statements are equivalent.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $f$ is order-preserving.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $f(a) 
+\backslash
+vee f(b) 
+\backslash
+leq f(a 
+\backslash
+vee b)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $f(a 
+\backslash
+wedge b) 
+\backslash
+leq f(a) 
+\backslash
+wedge f(b)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{lem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(1)
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+(2).
+ 
+\begin_inset Formula $a\,,b\leq a\vee b$
+\end_inset
+
+ and 
+\begin_inset Formula $f$
+\end_inset
+
+ is order-preserving 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $f(a)\,,f(b)\leq f(a\vee b)$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $f(a\vee b)$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $\{f(a)\,,f(b)\}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $f(a)\vee f(b)\leq f(a\vee b)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+(2)
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+(3).
+ It holds because of the Dual Principal.
+\end_layout
+
+\begin_layout Proof
+(3) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+(1).
+ Let 
+\begin_inset Formula $a\,,b\in L$
+\end_inset
+
+ with 
+\begin_inset Formula $a\leq b$
+\end_inset
+
+, then 
+\begin_inset Formula $a=a\wedge b$
+\end_inset
+
+, by hypothesis, 
+\begin_inset Formula $f(a)=f(a\wedge b)\leq f(a)\wedge f(b)\leq f(b)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{defn} Let $L$ be a lattice.
+ A non-empty subset $J$ of $L$ is called an ideal if
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+forall a, b 
+\backslash
+in J, a
+\backslash
+vee b 
+\backslash
+in J$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+in L, b 
+\backslash
+in J$ and $a 
+\backslash
+leq b$ imply $a 
+\backslash
+in J$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{defn}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{defn} Let $L$ a lattice.
+ A non-empty subset $G$ of $L$ is called a filter if
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+forall a,b 
+\backslash
+in G, a 
+\backslash
+wedge b 
+\backslash
+in G$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $a 
+\backslash
+in L, b 
+\backslash
+in G$ and $a 
+\backslash
+geq b$ imply $a 
+\backslash
+in G$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{defn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{lem} Let $P$ be a lattice, let $S, 
+\backslash
+, T 
+\backslash
+subseteq P$.
+ Suppose that $
+\backslash
+vee S,
+\backslash
+; 
+\backslash
+vee T,
+\backslash
+; 
+\backslash
+wedge S,
+\backslash
+; 
+\backslash
+wedge T$ exist in $P$ then
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+vee(S 
+\backslash
+cup T) = (
+\backslash
+vee S) 
+\backslash
+vee (
+\backslash
+vee T)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+wedge(S 
+\backslash
+cup T) = (
+\backslash
+wedge S) 
+\backslash
+wedge (
+\backslash
+wedge T)$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{lem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be partially ordered sets and 
+\begin_inset Formula $\varphi:\, P\rightarrow Q$
+\end_inset
+
+ be a map such that 
+\begin_inset Formula $\varphi(\vee S)=\vee\varphi(S)$
+\end_inset
+
+ for 
+\begin_inset Formula $\vee S$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is said to preserve existing joins.
+ Dually, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ preserves the existing meets.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{lem} Let $P$ and $Q$ be partially ordered sets, and $
+\backslash
+varphi :
+\backslash
+, P 
+\backslash
+rightarrow Q$ be an order-preserving map.
+ Then
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item Suppose that $S 
+\backslash
+subseteq P$ such that $
+\backslash
+vee S$ exists in $P$ and $
+\backslash
+vee 
+\backslash
+varphi (
+\backslash
+vee S)$ exists in $Q$, then $
+\backslash
+varphi (
+\backslash
+vee S) 
+\backslash
+geq 
+\backslash
+vee 
+\backslash
+varphi (S)$.
+ Dually, $
+\backslash
+varphi (
+\backslash
+wedge S) 
+\backslash
+leq 
+\backslash
+wedge 
+\backslash
+varphi (S)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item if $
+\backslash
+varphi$ is an order-isomorphism, then $
+\backslash
+varphi$ preserves all existing joins and meets.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{lem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a partially ordered set, 
+\begin_inset Formula $Q\subseteq P$
+\end_inset
+
+ with the same order, let 
+\begin_inset Formula $S\subseteq Q$
+\end_inset
+
+, then if 
+\begin_inset Formula $\vee_{P}S$
+\end_inset
+
+ exists and is in Q then 
+\begin_inset Formula $\vee_{Q}S$
+\end_inset
+
+ exists and 
+\begin_inset Formula $\vee_{P}S=\vee_{Q}S$
+\end_inset
+
+.
+ Dually it is true for 
+\begin_inset Formula $\wedge_{P}S$
+\end_inset
+
+ and 
+\begin_inset Formula $\wedge_{Q}S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Suppose 
+\begin_inset Formula $\vee_{p}S$
+\end_inset
+
+ exists and it is in 
+\begin_inset Formula $Q$
+\end_inset
+
+, then for all 
+\begin_inset Formula $x\in S$
+\end_inset
+
+, 
+\begin_inset Formula $x\leq\vee_{P}S$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\vee_{p}S$
+\end_inset
+
+ is in 
+\begin_inset Formula $Q$
+\end_inset
+
+, it is an upper bound for 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $y$
+\end_inset
+
+ be any upper bound for 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Then it is an upper bound for 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $y\leq\vee_{p}S$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\vee_{p}S=\vee_{Q}S$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be an partially ordered set such that 
+\begin_inset Formula $\forall\, S\subseteq P$
+\end_inset
+
+ and 
+\begin_inset Formula $S\neq\phi$
+\end_inset
+
+, 
+\begin_inset Formula $\bigwedge S$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+ for every non-empty subset 
+\begin_inset Formula $S$
+\end_inset
+
+, then 
+\begin_inset Formula $\bigvee S$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+ for every subset 
+\begin_inset Formula $S$
+\end_inset
+
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+ which has an upper bound in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $S\subseteq P$
+\end_inset
+
+ and 
+\begin_inset Formula $S$
+\end_inset
+
+ has an upper bound in 
+\begin_inset Formula $P$
+\end_inset
+
+, therefore 
+\begin_inset Formula $S^{u}\neq\textrm{\O}$
+\end_inset
+
+.
+ By hypothesis, 
+\begin_inset Formula $\alpha=\bigwedge S^{u}$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $x\in S$
+\end_inset
+
+, then 
+\begin_inset Formula $x\leq y\quad\forall y\in S^{u}$
+\end_inset
+
+, therefore, 
+\begin_inset Formula $x$
+\end_inset
+
+ is a lower bound for 
+\begin_inset Formula $S^{u}$
+\end_inset
+
+, then 
+\begin_inset Formula $x\leq\alpha$
+\end_inset
+
+ since 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the greatest lower bound.
+ Hence, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Finally, 
+\begin_inset Formula $\bigvee S=\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{thm} Let $P$ be a non-empty partially ordered set, then the following
+ statements are equivalent.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $P$ is a complete lattice.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+wedge S$ exists in $P$, $
+\backslash
+forall S 
+\backslash
+subseteq P$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $P$ has a top element, and $
+\backslash
+wedge S$ exists in $P$ $
+\backslash
+forall S 
+\backslash
+subseteq P, 
+\backslash
+,S 
+\backslash
+neq 
+\backslash
+varphi$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $(1)\Rightarrow(2)$
+\end_inset
+
+ is trivial, it follows the definition of complete lattices.
+ 
+\end_layout
+
+\begin_layout Proof
+Now we show that 
+\begin_inset Formula $(2)\Rightarrow(3)$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\textrm{\O}\subseteq P$
+\end_inset
+
+, then 
+\begin_inset Formula $\wedge\textrm{\O}$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $p\in P$
+\end_inset
+
+, then there is no element 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $\textrm{\O}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x\nleq p$
+\end_inset
+
+, hence every element 
+\begin_inset Formula $p\in P$
+\end_inset
+
+ is a lower bound for 
+\begin_inset Formula $\textrm{\O}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\wedge\textrm{\O}$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $\forall\, p\in P$
+\end_inset
+
+, 
+\begin_inset Formula $p\leq\wedge\textrm{\O}$
+\end_inset
+
+, hence 
+\begin_inset Formula $\top$
+\end_inset
+
+= 
+\begin_inset Formula $\wedge\textrm{\O}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Now we show that 
+\begin_inset Formula $(3)\Rightarrow(1)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $P\subseteq P$
+\end_inset
+
+ and 
+\begin_inset Formula $P\neq\textrm{\O}$
+\end_inset
+
+, then 
+\begin_inset Formula $\wedge P$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\bot=\wedge P$
+\end_inset
+
+, clearly for 
+\begin_inset Formula $\textrm{\O}\subseteq P$
+\end_inset
+
+, 
+\begin_inset Formula $\vee\textrm{\O}=\top$
+\end_inset
+
+ and since 
+\begin_inset Formula $\bot$
+\end_inset
+
+exists in 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\wedge\textrm{\O}=\bot$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $S\subseteq P$
+\end_inset
+
+ and 
+\begin_inset Formula $S\neq\textrm{\O}$
+\end_inset
+
+, by hypothesis 
+\begin_inset Formula $\wedge S\in P$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\vee S$
+\end_inset
+
+.
+ since 
+\begin_inset Formula $\top\,\in P$
+\end_inset
+
+, S has a upper bound, 
+\begin_inset Formula $\therefore$
+\end_inset
+
+ 
+\begin_inset Formula $S^{u}\neq\textrm{\O}$
+\end_inset
+
+, hence 
+\begin_inset Formula $\wedge S^{u}$
+\end_inset
+
+exists in 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $\vee S=\wedge S^{u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+To sum up, 
+\begin_inset Formula $P$
+\end_inset
+
+ is a complete lattice.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be an ordered set.
+ If 
+\begin_inset Formula $C=\{c_{0},c_{1},\ldots,c_{n}\}$
+\end_inset
+
+ is a finite chain in 
+\begin_inset Formula $P$
+\end_inset
+
+ with 
+\begin_inset Formula $|C|=n+1$
+\end_inset
+
+, then 
+\begin_inset Formula $C$
+\end_inset
+
+ is said to have length 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ have length 
+\begin_inset Formula $n$
+\end_inset
+
+ if the length of the longest chain in 
+\begin_inset Formula $P$
+\end_inset
+
+ is 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ is of finite length if it has a length 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, and it has no infinite chains if every chain in 
+\begin_inset Formula $P$
+\end_inset
+
+ is finite.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $P$
+\end_inset
+
+ satisfies the Ascending Chain Condition if given any sequence 
+\begin_inset Formula $x_{1}\leq x_{2}\cdots\leq x_{n}\leq\cdots$
+\end_inset
+
+ in 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\, k\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x_{i}=x_{k}$
+\end_inset
+
+ 
+\begin_inset Formula $\forall i=k,\: k+1,\:\ldots$
+\end_inset
+
+ .
+ Dually, 
+\begin_inset Formula $P$
+\end_inset
+
+ satisfies the Descending Chain Condition.
+\end_layout
+
+\begin_layout Section
+Complete partially ordered sets
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a partially ordered set and 
+\begin_inset Formula $\textrm{\O}\neq S\subseteq P$
+\end_inset
+
+, then 
+\begin_inset Formula $S$
+\end_inset
+
+ is said to be directed if 
+\begin_inset Formula $\forall\, x,\, y\in S$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\, z\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z\,\in\{x,\, y\}^{u}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $D$
+\end_inset
+
+ is a directed subset of 
+\begin_inset Formula $P$
+\end_inset
+
+, we write 
+\begin_inset Formula $\bigvee D$
+\end_inset
+
+ as 
+\begin_inset Formula $\bigsqcup D$
+\end_inset
+
+ if it exists.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $S$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $P$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\forall F\subseteq S,$
+\end_inset
+
+ 
+\begin_inset Formula $|F|<\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\, z\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z\in F^{U}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Say 
+\begin_inset Formula $S$
+\end_inset
+
+ is directed, then 
+\begin_inset Formula $\forall x,y\in S,$
+\end_inset
+
+ 
+\begin_inset Formula $\exists z\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z\in\{x,y\}^{u}$
+\end_inset
+
+.
+ Suppose this is true for 
+\begin_inset Formula $F\subseteq S$
+\end_inset
+
+ such that 
+\begin_inset Formula $|F|=k$
+\end_inset
+
+, consider 
+\begin_inset Formula $F\bigcup\{s\}$
+\end_inset
+
+ where 
+\begin_inset Formula $s\in S$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $a,b\in F\bigcup\{s\}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a,b\in F$
+\end_inset
+
+ then the proof is done.
+ If 
+\begin_inset Formula $a=s$
+\end_inset
+
+, by induction hypothesis, 
+\begin_inset Formula $\exists z\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z\in F^{u}$
+\end_inset
+
+, and since 
+\begin_inset Formula $S$
+\end_inset
+
+ is directed, 
+\begin_inset Formula $\exists z_{1}\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z_{1}\in\{s,z\}^{u}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $z_{1}\in\{F\bigcup\{s\}\}^{u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, say 
+\begin_inset Formula $\forall F\subseteq S$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+ is finite, 
+\begin_inset Formula $\exists z\in S$
+\end_inset
+
+ such that 
+\begin_inset Formula $z\in F^{u}$
+\end_inset
+
+.
+ Then in particular it is true for 
+\begin_inset Formula $\{x,y|x,y\in S\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{defn} Let $P$ be a partially ordered set, then $P$ is a complete partially
+ ordered set(CPO) if 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $P$ has bottom element $
+\backslash
+bot$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+bigsqcup D$ exists for each directed subset $D$ of $P$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+$P$ is a pre-CPO if it satisfies the second property.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{defn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{defn} Let $P$ be a CPO, $Q
+\backslash
+subseteq P$, then $Q$ is a subCPO of  $P$  if 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+bot 
+\backslash
+in Q$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item if $D 
+\backslash
+subseteq Q$ is a directed in $Q$, then $
+\backslash
+bigsqcup_{Q} D$ exists and $
+\backslash
+bigsqcup_{Q} D = 
+\backslash
+bigsqcup_{P} D$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{defn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be pre-CPOs, let 
+\begin_inset Formula $\varphi:\, P\rightarrow Q$
+\end_inset
+
+ be a map from 
+\begin_inset Formula $P$
+\end_inset
+
+ to 
+\begin_inset Formula $Q$
+\end_inset
+
+, then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous if 
+\begin_inset Formula $\forall\, D\subseteq P$
+\end_inset
+
+ directed in 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi(D)$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi(\bigsqcup D)=\bigsqcup_{Q}\varphi(D)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are CPOs and 
+\begin_inset Formula $\varphi(\bot)=\bot$
+\end_inset
+
+, then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is said to be strict.
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be CPOs and 
+\begin_inset Formula $\varphi:\, P\rightarrow Q$
+\end_inset
+
+, then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving iff 
+\begin_inset Formula $\forall\, D\subseteq P$
+\end_inset
+
+ directed in 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi(D)$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\sqcup\varphi(D)\leq\varphi(\sqcup D)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x\,,y\in\varphi(D)$
+\end_inset
+
+, then 
+\begin_inset Formula $\exists\, a,b\in D$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi(a)=x$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi(b)=y$
+\end_inset
+
+.
+ 
+\begin_inset Formula $a,b\in D\Rightarrow\exists\, c\in D$
+\end_inset
+
+ such that 
+\begin_inset Formula $a\leq c$
+\end_inset
+
+ and 
+\begin_inset Formula $b\leq c$
+\end_inset
+
+.
+ Now, consider 
+\begin_inset Formula $\varphi(c)\in\varphi(D),$
+\end_inset
+
+since 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving, 
+\begin_inset Formula $\therefore$
+\end_inset
+
+ 
+\begin_inset Formula $a\leq c$
+\end_inset
+
+ and 
+\begin_inset Formula $b\leq c$
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\varphi(a),\,\varphi(b)\leq\varphi(c)$
+\end_inset
+
+, hence 
+\begin_inset Formula $\varphi(D)$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\forall\, x\in\varphi(D)$
+\end_inset
+
+, 
+\begin_inset Formula $x\leq\varphi(\bigsqcup D)$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\bigsqcup\varphi(D)\leq\varphi(\bigsqcup D)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Conversely, let 
+\begin_inset Formula $a\,,b\,\in P$
+\end_inset
+
+ and 
+\begin_inset Formula $a\leq b$
+\end_inset
+
+ , then the set 
+\begin_inset Formula $\left\{ a,\, b\right\} $
+\end_inset
+
+ is directed in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\therefore$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi(\{a\,,b\})$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigsqcup\varphi(\{a\,,b\})\leq\varphi(\bigsqcup\{a\,,b\})=\varphi(b)$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\varphi(a)\leq\varphi(b)\Rightarrow\varphi$
+\end_inset
+
+ is order-preserving.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Corollary
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be CPOs and 
+\begin_inset Formula $\varphi:\, P\rightarrow Q$
+\end_inset
+
+ be a map, if 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous then it is order-preserving.
+\end_layout
+
+\begin_layout Remark*
+Not every order-preserving map between CPOs is continuous.
+ For example the map 
+\begin_inset Formula $\varphi:\,\wp(\mathbb{N})\rightarrow\wp(\mathbb{N})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ be CPOs and 
+\begin_inset Formula $\varphi:\, P\rightarrow Q$
+\end_inset
+
+ be a map, then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous if 
+\begin_inset Formula $P$
+\end_inset
+
+ satisfies (ACC).
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset in 
+\begin_inset Formula $P$
+\end_inset
+
+, since 
+\begin_inset Formula $P$
+\end_inset
+
+ satisfies (ACC), 
+\begin_inset Formula $D$
+\end_inset
+
+ has a greatest element 
+\begin_inset Formula $\alpha=\bigsqcup D$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving implies 
+\begin_inset Formula $\varphi(D)$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigsqcup\varphi(D)\leq\varphi(\bigsqcup D)=\varphi(\alpha)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\alpha\in D$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi(\alpha)\leq\bigsqcup\varphi(D)$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\bigsqcup\varphi(D)=\varphi(\bigsqcup D)$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous.
+ 
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be an partially ordered set.
+ Then 
+\begin_inset Formula $P$
+\end_inset
+
+ is a CPO if and only if each chain has a least upper bound in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Say 
+\begin_inset Formula $P$
+\end_inset
+
+ is a CPO, and let 
+\begin_inset Formula $C\subseteq P$
+\end_inset
+
+ be a chain , then 
+\begin_inset Formula $\forall\, x,y\,\in C$
+\end_inset
+
+, either 
+\begin_inset Formula $x\leq y$
+\end_inset
+
+ or 
+\begin_inset Formula $y\leq x$
+\end_inset
+
+, therefore either 
+\begin_inset Formula $x\in\{x,y\}^{u}$
+\end_inset
+
+ or 
+\begin_inset Formula $y\in\{x,y\}^{u}$
+\end_inset
+
+.
+ which implies 
+\begin_inset Formula $C$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then by definition, 
+\begin_inset Formula $\bigsqcup C$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+To prove the converse is very complicated, I just do it for the case that
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ is a countable partially ordered set.
+\end_layout
+
+\begin_layout Proof
+Consider 
+\begin_inset Formula $\textrm{\O}\subseteq P,$
+\end_inset
+
+ then 
+\begin_inset Formula $\textrm{\O}$
+\end_inset
+
+ is a chain in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ By hypothesis, 
+\begin_inset Formula $\textrm{\O}$
+\end_inset
+
+ has a least upper bound in 
+\begin_inset Formula $P$
+\end_inset
+
+, but 
+\begin_inset Formula $\textrm{\O}^{u}=P$
+\end_inset
+
+ , therefore 
+\begin_inset Formula $\exists\,\bot\in P$
+\end_inset
+
+ such that 
+\begin_inset Formula $\forall\, x\in P$
+\end_inset
+
+, 
+\begin_inset Formula $x\geq\bot$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Now we shall prove that for every directed subset 
+\begin_inset Formula $D$
+\end_inset
+
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\bigsqcup D$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Suppose 
+\begin_inset Formula $D=\{x_{0},x_{1},\ldots,x_{n},\ldots\}$
+\end_inset
+
+ is a directed subset of 
+\begin_inset Formula $P$
+\end_inset
+
+, then for each finite subset 
+\begin_inset Formula $F$
+\end_inset
+
+ of 
+\begin_inset Formula $D$
+\end_inset
+
+, we fix an upper bound 
+\begin_inset Formula $u_{F}$
+\end_inset
+
+ of 
+\begin_inset Formula $F$
+\end_inset
+
+ in 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Define sets 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula \[
+D_{0}=\{x_{0}\},\;\; D_{i+1}=D_{i}\bigcup\{y_{i+1},\, u_{D_{i}\bigcup\{y_{i+1}\}}\}\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ is the element 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ in 
+\begin_inset Formula $D\setminus D_{i}$
+\end_inset
+
+, with the subscript 
+\begin_inset Formula $n$
+\end_inset
+
+ chosen as small as possible.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{subclaim}{Claim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim} $D_{i}$ has at least $i$ elements 
+\backslash
+end{subclaim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof} $D_0 = {x_0}$ implies $D_0$ has at least 0 elements.
+ 
+\end_layout
+
+\begin_layout Standard
+
+Suppose that $D_k$ has at least $k$ elements,  consider $D_{k+1}=D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1},u_{
+\backslash
+{D_k 
+\backslash
+bigcup {
+\backslash
+{ y_{k+1} 
+\backslash
+}} 
+\backslash
+}}
+\backslash
+}$.
+  Since $D$ is an infinite set  and $D_k$ is finite, $D 
+\backslash
+setminus D_k 
+\backslash
+neq 
+\backslash
+textrm{
+\backslash
+O}$, therefore $y_{k+1} 
+\backslash
+in D 
+\backslash
+setminus D_k$.
+ Hence, $D_{k+1}$ has at least $k+1$ elements.
+ By induction, $D_i$ has at least $i$ elements.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim} $D_i$ is directed 
+\backslash
+end{subclaim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof} Consider $D_0 = {x_0}$, it is directed.
+  Now suppose that $D_k$ is directed, consider $D_{k+1}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Let $x, y 
+\backslash
+in D_{k+1}$.
+  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 1: $x,y 
+\backslash
+in D_k$, then $
+\backslash
+exists z 
+\backslash
+in 
+\backslash
+{x,y
+\backslash
+}^u$ such that $z 
+\backslash
+in D_k 
+\backslash
+subseteq D_{k+1}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 2: $y = y_{k+1}$, then $u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}$ is an upper bound for $D_{k+1}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 3: $y = u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+To sum up, $D_i$ is directed.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim} $
+\backslash
+bigvee D_i$ exists in $P$ 
+\backslash
+end{subclaim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+Consider $D_{k+1}$ for $k 
+\backslash
+geq 0$, then $D_{k+1} = D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}, u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}
+\backslash
+}$.
+  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Hence, $u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}$ is an upper bound for $D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}$ and $u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}} 
+\backslash
+leq u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Therefore $u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}} = 
+\backslash
+bigvee D_i$
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim} $
+\backslash
+{
+\backslash
+bigvee D_i
+\backslash
+}_{i 
+\backslash
+geq 1}$ form a chain in $P$.
+ 
+\backslash
+end{subclaim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof} $D_m 
+\backslash
+subseteq D_n$ for all $m 
+\backslash
+leq n$, therefore, $
+\backslash
+bigvee D_m 
+\backslash
+leq 
+\backslash
+bigvee D_n$.
+ 
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim} $
+\backslash
+sqcup 
+\backslash
+{
+\backslash
+vee D_i
+\backslash
+}_{i 
+\backslash
+geq 1}$ is an upper bound for $D$.
+ 
+\backslash
+end{subclaim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+We first show that $x_i 
+\backslash
+in D_N,  
+\backslash
+forall i 
+\backslash
+leq N$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$x_0 
+\backslash
+in D_0$, hence this is true for $D_0$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Now, suppose it is ture for $n = k$.
+ Consider $n = k+1$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$D_{k+1} = D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}, u_{D_k 
+\backslash
+bigcup 
+\backslash
+{y_{k+1}
+\backslash
+}}
+\backslash
+}$, but $x_i = y_{k+1} 
+\backslash
+in D 
+\backslash
+setminus D_k$ and $x_i$ has the smallest index.
+ Therefore $i 
+\backslash
+geq k+1$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 1: $i 
+\backslash
+geq k+1$, then $x_{k+1} 
+\backslash
+in D_k 
+\backslash
+subseteq D_{k+1}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 2: $i = k+1$, then $x_i 
+\backslash
+in D_{k+1}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Therefore, by induction $x_i 
+\backslash
+in D_N$ for all $i 
+\backslash
+leq N$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Now, let $x_n 
+\backslash
+in D$, then $x_n 
+\backslash
+in D_i 
+\backslash
+subseteq D, 
+\backslash
+forall i 
+\backslash
+geq n$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$
+\backslash
+therefore$ $x_n 
+\backslash
+leq 
+\backslash
+vee D_i 
+\backslash
+leq 
+\backslash
+bigsqcup 
+\backslash
+{{
+\backslash
+bigvee D_i}
+\backslash
+}_{i 
+\backslash
+geq 1} 
+\backslash
+forall n 
+\backslash
+in 
+\backslash
+mathbb{N}_{0}$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+But, $
+\backslash
+vee D_i 
+\backslash
+in D$ by definition, therefore ${
+\backslash
+bigvee D_i} 
+\backslash
+subseteq D$ implies $
+\backslash
+bigsqcup 
+\backslash
+{{
+\backslash
+bigvee D_i}
+\backslash
+} 
+\backslash
+leq x,  
+\backslash
+forall x 
+\backslash
+in D^u$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$
+\backslash
+therefore$ $
+\backslash
+bigsqcup 
+\backslash
+{{
+\backslash
+bigvee D_i}
+\backslash
+}_{i 
+\backslash
+geq 1} = 
+\backslash
+bigsqcup D$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+Hence, $P$ is a CPO.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a partially ordered set, 
+\begin_inset Formula $F:\, P\rightarrow P$
+\end_inset
+
+ be a self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x\in P$
+\end_inset
+
+ is a fixpoint of 
+\begin_inset Formula $F$
+\end_inset
+
+ if 
+\begin_inset Formula $F(x)=x$
+\end_inset
+
+.
+ It is a pre-fixpoint if 
+\begin_inset Formula $F(x)\leq x$
+\end_inset
+
+, a post-fixpoint 
+\begin_inset Formula $x\leq F(x)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+We use 
+\begin_inset Formula $\mu(F)$
+\end_inset
+
+ to denote the least fixpoint of 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu(F)$
+\end_inset
+
+ to denote the greatest fixpoint.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a CPO, 
+\begin_inset Formula $Y$
+\end_inset
+
+ be a subset of 
+\begin_inset Formula $P$
+\end_inset
+
+ and let 
+\begin_inset Formula $F:\, P\rightarrow P$
+\end_inset
+
+ be a self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $F$
+\end_inset
+
+ is said to be increasing if for all 
+\begin_inset Formula $x\in P$
+\end_inset
+
+, 
+\begin_inset Formula $x\leq F(x)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula $F$
+\end_inset
+
+- invariant if 
+\begin_inset Formula $F(Y)\subseteq Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a CPO, 
+\begin_inset Formula $F:\, P\rightarrow P$
+\end_inset
+
+ be self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+, then there exists a 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO 
+\begin_inset Formula $P_{\alpha}$
+\end_inset
+
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+, we have 
+\begin_inset Formula $P_{0}\subseteq P_{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $C$
+\end_inset
+
+ be the collection of all 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+, since 
+\begin_inset Formula $P$
+\end_inset
+
+ itself is a 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $P\in C$
+\end_inset
+
+, hence 
+\begin_inset Formula $C\neq\textrm{\O}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $P_{\alpha}\in C$
+\end_inset
+
+, then consider 
+\begin_inset Formula $P_{0}=\bigcap_{\alpha\in\Lambda}P_{\alpha}$
+\end_inset
+
+ where 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is an index set.
+ We shall prove that it is a 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $P_{\alpha}$
+\end_inset
+
+ is a subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\forall\,\alpha\in\Lambda$
+\end_inset
+
+, then 
+\begin_inset Formula $\bot\in P_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, hence 
+\begin_inset Formula $\bot\in P_{0}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset in 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+, then 
+\begin_inset Formula $D$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $P_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and it is directed in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\sqcup_{p}D$
+\end_inset
+
+ exists.
+ And since 
+\begin_inset Formula $P_{\alpha}$
+\end_inset
+
+ is a subCPO, we have 
+\begin_inset Formula $\sqcup_{p}D\in P_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in\Lambda$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\sqcup_{p}D\in P_{0}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ is an 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $P_{0}\subseteq P_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in\Lambda$
+\end_inset
+
+ by definition.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{fpt1}[thm]{Fixpoint theorem One}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{fpt1} Let $P$ be a CPO, let $F$ be an order-preserving self-map on
+ $P$ and let $
+\backslash
+alpha = 
+\backslash
+sqcup_{n
+\backslash
+geq0}F^n(
+\backslash
+bot)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item If $
+\backslash
+alpha 
+\backslash
+in fix(F)$, then $
+\backslash
+alpha = 
+\backslash
+mu(F)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item If $F$ is continuous, then $
+\backslash
+mu(F)$ exists and equals $
+\backslash
+alpha$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{fpt1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(1) Since 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\bot\leq F(\bot)$
+\end_inset
+
+.
+ Applying 
+\begin_inset Formula $F^{n}$
+\end_inset
+
+ to 
+\begin_inset Formula $\bot$
+\end_inset
+
+ , we have 
+\begin_inset Formula $F^{n}(\bot)\leq F^{n+1}(\bot)$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Then we get a chain 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula \[
+\bot\leq F(\bot)\leq F^{2}(\bot)\ldots\leq F^{n}(\bot)\ldots\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $P$
+\end_inset
+
+ is a CPO, 
+\begin_inset Formula $\alpha=\bigsqcup_{n\geq0}F^{n}(\bot)$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ be any fixpoint of 
+\begin_inset Formula $F$
+\end_inset
+
+, then 
+\begin_inset Formula $F^{n}(X_{0})=x_{0}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $\bot\leq x_{0}\Rightarrow F^{n}(\bot)\leq F^{n}(x_{0})$
+\end_inset
+
+ since 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving.
+ Therefore 
+\begin_inset Formula $\alpha\leq F^{n}(x_{0})=x_{0}\;\forall n\in\mathbb{N}_{0}$
+\end_inset
+
+.
+ Hence, if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is a fixpoint then it is the least fixpoint.
+\end_layout
+
+\begin_layout Proof
+(2) Consider 
+\begin_inset Formula $F(\alpha)=F(\bigsqcup_{n\geq0}F^{n}(\bot))$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $F$
+\end_inset
+
+ is continuous, 
+\begin_inset Formula $F(\alpha)=\bigsqcup_{n\geq0}F(F^{n}(\bot))=\bigsqcup_{n\geq1}F^{n}(\bot)$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $\bot\leq F^{n}(\bot)\;\;\forall n\in\mathbb{N}_{0}$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\bigsqcup_{n\geq1}F^{n}(\bot)=\bigsqcup_{n\geq0}F^{n}(\bot)=\alpha$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is a fixpoint, then by (1), it is the least fixpoint.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{thm} Let $P$ be a partially ordered set and $F$ be an order-preserving
+ self-map on $P$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item Suppose $F$ has a least pre-fixpoint $
+\backslash
+mu_{*}(F)$.
+ Then $F$ has a least fixpoint, and $F(x) 
+\backslash
+leq x$ implies $
+\backslash
+mu(F) 
+\backslash
+leq x$.
+ Also $
+\backslash
+mu(F) = 
+\backslash
+mu_{*}(F)$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item Suppose $P$ is a complete lattice, then $
+\backslash
+mu_{*}(F)$ exists.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(1) Suppose that 
+\begin_inset Formula $\mu_{*}(F)$
+\end_inset
+
+ exists.
+ Now consider 
+\begin_inset Formula $F(\mu_{*}(F))$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mu_{*}(F)$
+\end_inset
+
+ is a pre-fixpoint, 
+\begin_inset Formula $F(\mu_{*}(F))\leq\mu_{*}(F)$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving implies 
+\begin_inset Formula $F(F(\mu_{*}(F)))\leq F(\mu_{*}(\mbox{F}))$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $F(\mu_{*}(F))$
+\end_inset
+
+ is also a pre-fixpoint, hence we have 
+\begin_inset Formula $\mu_{*}(F)\leq F(\mu_{*}(F))$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\mu_{*}(F)=F(\mu_{*}(F))\Rightarrow\mu_{*}(F)$
+\end_inset
+
+ is a fixpoint.
+ 
+\begin_inset Formula $fix(F)\subseteq pre(F)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mu(F)=\mu_{*}(F)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+(2) Suppose 
+\begin_inset Formula $P$
+\end_inset
+
+ is a complete lattice, then consider 
+\begin_inset Formula $\wedge pre(F)$
+\end_inset
+
+, since 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving, 
+\begin_inset Formula $F(\wedge pre(F))\leq F(y)\leq y\;\;\forall y\in pre(F)$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $F(\wedge pre(F))\leq\wedge pre(F)$
+\end_inset
+
+, hence 
+\begin_inset Formula $\wedge pre(F)\in pre(F)$
+\end_inset
+
+ and it is the least pre-fixpoint.
+ Then by (1), 
+\begin_inset Formula $\wedge pre(F)=\mu(F)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a CPO, then the increasing order-preserving self-maps on 
+\begin_inset Formula $P$
+\end_inset
+
+ have a common fixpoint.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $I(P)$
+\end_inset
+
+ be the set of all increasing order-preserving self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $id_{p}\in I(P)$
+\end_inset
+
+, 
+\begin_inset Formula $I(P)\neq\textrm{\O}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $F\,,G\in I(P)$
+\end_inset
+
+ and 
+\begin_inset Formula $x\in P$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $F(x)\leq F(G(x))$
+\end_inset
+
+ since 
+\begin_inset Formula $G$
+\end_inset
+
+ is increasing and 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving.
+ And 
+\begin_inset Formula $G(x)\leq F(G(x))$
+\end_inset
+
+ since 
+\begin_inset Formula $F$
+\end_inset
+
+ is increasing.
+ Therefore 
+\begin_inset Formula $F\circ G$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $\{F,G\}$
+\end_inset
+
+ in 
+\begin_inset Formula $I(P)$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $I(P)$
+\end_inset
+
+ is a directed subset of the CPO 
+\begin_inset Formula $<P\rightarrow P>$
+\end_inset
+
+ of all order-preserving self-maps on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $H=\sqcup I(P)$
+\end_inset
+
+ in 
+\begin_inset Formula $<P\rightarrow P>$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $H$
+\end_inset
+
+ is an order-preserving self-map on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $x\in P$
+\end_inset
+
+, consider 
+\begin_inset Formula $H(x)$
+\end_inset
+
+.
+ For all 
+\begin_inset Formula $F\in I(P)$
+\end_inset
+
+, we have 
+\begin_inset Formula $x\leq F(x)$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $F\leq H$
+\end_inset
+
+ implies 
+\begin_inset Formula $F(x)\leq H(x)$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $x\leq H(x)$
+\end_inset
+
+, therefore 
+\begin_inset Formula $H\in I(P)$
+\end_inset
+
+.
+ Also 
+\begin_inset Formula $F\circ H$
+\end_inset
+
+ is in 
+\begin_inset Formula $I(P)$
+\end_inset
+
+, therefore 
+\begin_inset Formula $F\circ H\leq H$
+\end_inset
+
+, but 
+\begin_inset Formula $F$
+\end_inset
+
+ is increasing implies 
+\begin_inset Formula $H\leq F\circ H$
+\end_inset
+
+ .
+ Hence 
+\begin_inset Formula $H=F\circ H$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Now, consider 
+\begin_inset Formula $x\in P$
+\end_inset
+
+, then 
+\begin_inset Formula $H(x)=F(H(x))$
+\end_inset
+
+, therefore 
+\begin_inset Formula $H(x)\in P$
+\end_inset
+
+ is a fixpoint for 
+\begin_inset Formula $F$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in P$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{fpt2}[thm]{Fixpoint theorem Two}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{fpt2} Let $P$ be a CPO and let $F:
+\backslash
+,P 
+\backslash
+rightarrow P$ be order-preserving.
+ Then $F$ has a least fixpoint.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{fpt2}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Define 
+\begin_inset Formula $\Phi:\wp(P)\rightarrow\wp(P)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\Phi(X)=\{\bot\}\bigcup F(X)\{\bigsqcup D\:|\: D\subseteq X\; and\; D\; is\; directed\}$
+\end_inset
+
+ for all 
+\begin_inset Formula $X\subseteq P$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Now, consider 
+\begin_inset Formula $Y\subseteq X\subseteq P$
+\end_inset
+
+, then 
+\begin_inset Formula $F(Y)\subseteq F(X)$
+\end_inset
+
+ and 
+\begin_inset Formula $\{\bigsqcup D\:|\: D\subseteq Y\; and\; D\; is\; directed\}\subseteq\{\bigsqcup D\:|\: D\subseteq X\; and\; D\; is\; directed\}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is order-preserving, hence by Knaster-Tarski fixpoint theorem, it has a
+ least fixpoint given by 
+\begin_inset Formula $P_{0}=\bigcap\{X\in\wp(P)\:|\:\Phi(X)\subseteq X\}$
+\end_inset
+
+.
+ By definition, this is the smallest 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+ subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Setp 1: show that 
+\begin_inset Formula $P_{0}\subseteq post(F)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $Q=post(F)$
+\end_inset
+
+.
+ Clearly, 
+\begin_inset Formula $\bot\in Q$
+\end_inset
+
+.
+ And since 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving, 
+\begin_inset Formula $F(Q)\subseteq Q$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset of 
+\begin_inset Formula $Q$
+\end_inset
+
+, then 
+\begin_inset Formula $\bigsqcup F(D)\leq F(\bigsqcup D)$
+\end_inset
+
+, since 
+\begin_inset Formula $x\leq F(x)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in D$
+\end_inset
+
+, we have 
+\begin_inset Formula $\bigsqcup D\leq\bigsqcup F(D)$
+\end_inset
+
+, hence 
+\begin_inset Formula $\bigsqcup D\leq F(\bigsqcup D)$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\bigsqcup D\in post(P)$
+\end_inset
+
+.
+ Then we have 
+\begin_inset Formula $\Phi(Q)\subseteq Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Step 2: If 
+\begin_inset Formula $x\in P$
+\end_inset
+
+ is a fixpoint, then 
+\begin_inset Formula $P_{0}\subseteq\downarrow x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x$
+\end_inset
+
+ be a fixpoint, consider 
+\begin_inset Formula $\downarrow x$
+\end_inset
+
+, let 
+\begin_inset Formula $y\in\downarrow x$
+\end_inset
+
+, then 
+\begin_inset Formula $y\leq x\Rightarrow F(y)\leq F(x)=x$
+\end_inset
+
+, then 
+\begin_inset Formula $F(y)\in\downarrow x$
+\end_inset
+
+, hence 
+\begin_inset Formula $\downarrow x$
+\end_inset
+
+ is 
+\begin_inset Formula $F-invariant$
+\end_inset
+
+.
+ And it is trivial that 
+\begin_inset Formula $\downarrow x$
+\end_inset
+
+ is a subCPO of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $P_{0}\subseteq\downarrow x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Define 
+\begin_inset Formula $G=F|_{P_{0}}:P_{0}\rightarrow P_{0}$
+\end_inset
+
+, Since 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ is also a CPO, then 
+\begin_inset Formula $\exists a\in P_{0}$
+\end_inset
+
+ such that 
+\begin_inset Formula $G(a)=a$
+\end_inset
+
+ , hence 
+\begin_inset Formula $F(a)=a$
+\end_inset
+
+.
+ We need to show that 
+\begin_inset Formula $a$
+\end_inset
+
+ is both the top of 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and the least element of 
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Suppose that 
+\begin_inset Formula $x\in P$
+\end_inset
+
+ is a fixpoint, then 
+\begin_inset Formula $\Phi(\downarrow x)\subseteq\downarrow x$
+\end_inset
+
+.
+ Then we have 
+\begin_inset Formula $P_{0}=\mu(\Phi)\subseteq\downarrow x$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $a\in P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{0}\subseteq\downarrow x$
+\end_inset
+
+, we have 
+\begin_inset Formula $a\leq x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{fpt3}[thm]{Theorem(Fixpoint Theorem Three)}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{subclaim1}{Claim}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{fpt3} Let $P$ be a CPO and let $F$ be an increasing self-map on $P$.
+ Then $F$ has a  fixpoint.
+ 
+\backslash
+end{fpt3} 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+Let $P_0$ be the smallest $F-invariant$ subCPO of $P$, a element $x_0$ in
+ $P_0$ is called a roof of $F$ if for all $y 
+\backslash
+in P_0, y 
+\backslash
+leq x$, $F(y) 
+\backslash
+leq x$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Define $Z_x = 
+\backslash
+{ y 
+\backslash
+in P_0 | y 
+\backslash
+leq x 
+\backslash
+;or 
+\backslash
+;F(x) 
+\backslash
+leq y
+\backslash
+}$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim1} $Z_x = P_0$ 
+\backslash
+end{subclaim1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+First we show that $Z_x$ is a subCPO of $P$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Consider $
+\backslash
+bot 
+\backslash
+in P$, since $P_0$ is a subCPO, $
+\backslash
+bot 
+\backslash
+in P_0$ and for all $x 
+\backslash
+in P$, $
+\backslash
+bot 
+\backslash
+leq x$, hence $
+\backslash
+bot 
+\backslash
+in Z_x$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Let $D$ be a directed subset in $Z_x$, then $D$ is directed in $P$ and $P_0$.
+ Therefore $
+\backslash
+bigcup_p D$ exists and it is in $P_0$ since $P_0$ is a subCPO.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 1: $
+\backslash
+forall d 
+\backslash
+in D, d 
+\backslash
+leq x$, then $x$ is an upper bound for $D$, therefore $
+\backslash
+bigsqcup_p D 
+\backslash
+leq x$ since $
+\backslash
+bigsqcup_p D = 
+\backslash
+sup(D)$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 2: $
+\backslash
+exists d_0 
+\backslash
+in D$ such that $d_0 
+\backslash
+nleq x$, then $d_0 
+\backslash
+in Z_x$ implies $F(x) 
+\backslash
+leq d_0 
+\backslash
+leq 
+\backslash
+bigsqcup_p D$ and $
+\backslash
+bigsqcup_p D 
+\backslash
+in P_0$, therefore $
+\backslash
+bigsqcup_p D 
+\backslash
+in Z_x$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+To sum up, $
+\backslash
+bigsqcup_p D 
+\backslash
+in Z_x$ and $
+\backslash
+bot 
+\backslash
+in Z_x$ imply $Z_x$ is a subCPO of $P$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim1} $Z_x$ is $F-invariant$.
+ 
+\backslash
+end{subclaim1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+Let $y 
+\backslash
+in Z_x$, consider $F(y)$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Since $P_0$ is $F-invariant$, $F(x)$ is in $P_0$ for all $x 
+\backslash
+in P_0$, especially for $x$ being a roof element.
+ Then 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 1: $x=y$, then $F(x) 
+\backslash
+leq F(y)$, therefore $F(y) 
+\backslash
+in Z_x$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 2: $x 
+\backslash
+neq y$, then $y 
+\backslash
+in Z_x$ implies $y < x$ or $F(x) 
+\backslash
+leq y$.
+ If $y < x$, then since $F$ is increasing, we have $y 
+\backslash
+leq F(y)$, therefore $F(x) 
+\backslash
+leq y 
+\backslash
+leq F(y)$, hence $F(y) 
+\backslash
+in Z_x$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Therefore, $Z_x$ is $F-invariant$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+We proved that $Z_x$ is an $F-invariant$ subCPO of $P$ and $Z_x 
+\backslash
+subseteq P_0$, but $P_0$ is the smallest $F-invariant$ subCPO of $P$, therefore
+ $Z_x = P_0$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim1} Define $Z = 
+\backslash
+{x 
+\backslash
+in P_0 | x 
+\backslash
+;is 
+\backslash
+;a 
+\backslash
+;roof
+\backslash
+}$.
+ Since $
+\backslash
+bot 
+\backslash
+in Z$, $Z$ is not empty.
+ Then $Z$ is $F-invariant$.
+ 
+\backslash
+end{subclaim1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof} Take $y 
+\backslash
+in P_0$ and $x 
+\backslash
+in Z$.
+ Then $P_0 = Z_x$, hence we have either $y 
+\backslash
+leq x$ or $F(x) 
+\backslash
+leq y$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Suppose $y < x$, then $F(y) 
+\backslash
+leq x 
+\backslash
+leq F(x)$, hence $F(x)$ is a roof.
+ Therefore, $Z$ is $F-invariant$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim1} $Z$ is a subCPO of $P$ 
+\backslash
+end{subclaim1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}Let $x,y 
+\backslash
+in Z$, then $x,y$ are both roof elements, therefore  in particular, $Z_x
+ = P_0$, since $y 
+\backslash
+in P_0$, we have either $y 
+\backslash
+leq x$ or $x 
+\backslash
+leq F(x) 
+\backslash
+leq F(y)$, therefore $Z$ is a chain.
+ Hence $
+\backslash
+bigsqcup_p Z$ exists in $P_0$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Let $D$ be a directed subset in $Z$, we need to show that $
+\backslash
+bigsqcup_P D$ is in $Z$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Since $P$ is a CPO and $D$ is directed in $P$, we have $
+\backslash
+bigsqcup_P D$ exists, moreover, $P_0$ is a subCPO $
+\backslash
+Rightarrow$ $
+\backslash
+bigsqcup_P D$ is in $P_0$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+So suppose $D$ is non-empty, and let $y 
+\backslash
+in P_0$ such that $y < 
+\backslash
+bigsqcup_P D$, then for all $x 
+\backslash
+in Z$, we have either $y 
+\backslash
+leq x$ or $F(x) 
+\backslash
+leq y$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 1: there exists $x 
+\backslash
+in Z$ such that $y 
+\backslash
+leq x$, then $F(y) 
+\backslash
+leq x 
+\backslash
+leq 
+\backslash
+bigsqcup_P D$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Case 2: for all $x 
+\backslash
+in Z$, we have $F(x) 
+\backslash
+leq y$, then $x 
+\backslash
+leq F(x) 
+\backslash
+leq y$ implies $y$ is an upper bound for $D$, hence $
+\backslash
+bigsqcup_P D 
+\backslash
+leq y
+\backslash
+;
+\backslash
+;
+\backslash
+divideontimes$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Therefore, $
+\backslash
+bigsqcup_P D$ is a roof element, then it is in $Z$.
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+Thus, $Z$ is a subCPO of $P$.
+\end_layout
+
+\begin_layout Standard
+
+Therefore, $Z=P_0$.
+ Hence $P_0$ is also a chain.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{subclaim1} $P_0$ has a top element.
+ 
+\backslash
+end{subclaim1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\begin_layout Standard
+
+$P$ is a CPO and $P_0$ is a chain imply $
+\backslash
+bigsqcup_p P_0$ exists in $P$.
+ Also $P_0$ is a directed subset of $P_0$, then $
+\backslash
+exists 
+\backslash
+top_{p_0} 
+\backslash
+in P_0$.
+ And $
+\backslash
+top_{p_0} = 
+\backslash
+bigsqcup_p P_0$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\begin_layout Standard
+
+Now, $P_0$ is $F-invariant$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$
+\backslash
+Rightarrow F(P_0) 
+\backslash
+subseteq P_0$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$
+\backslash
+Rightarrow F(
+\backslash
+top_{P_0}) 
+\backslash
+in P_0$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+But $
+\backslash
+top_{P_0} 
+\backslash
+leq F(
+\backslash
+top_{P_0}) 
+\backslash
+leq 
+\backslash
+top_{P_0}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+$
+\backslash
+therefore 
+\backslash
+top_{P_0} = F(
+\backslash
+top_{P_0})$, hence it is a fixpoint of $F$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that: in this case we can not claim that 
+\begin_inset Formula $F$
+\end_inset
+
+ has a least fixpoint, in fact, not even a minimal fixpoint.
+ For example, consider the set 
+\begin_inset Formula $P=1\oplus\mathbb{N}^{\partial}$
+\end_inset
+
+ and 
+\begin_inset Formula $F:P\rightarrow P$
+\end_inset
+
+ such that 
+\begin_inset Formula $F(\bot)=0$
+\end_inset
+
+, and 
+\begin_inset Formula $F(x)=x\;\forall x\in\mathbb{N}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+theoremstyle{definition}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newtheorem{kt1}[thm]{The Knaster-Tarski Theorem}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{kt1} Let $L$ be a complete lattice and $F:
+\backslash
+, L 
+\backslash
+rightarrow L$ be an order-preserving self-map on $P$.
+ Then $
+\backslash
+alpha = 
+\backslash
+bigvee 
+\backslash
+{x 
+\backslash
+in L | x 
+\backslash
+leq F(x)
+\backslash
+}$ is the greatest fixpoint of $F$.
+ Dually, $F$ has  a least fixpoint given by $
+\backslash
+bigwedge 
+\backslash
+{x 
+\backslash
+in L | F(x) 
+\backslash
+leq x
+\backslash
+}$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{kt1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $H=\{x\in L|\: x\leq F(x)\}$
+\end_inset
+
+.
+ Then for all 
+\begin_inset Formula $x\in H$
+\end_inset
+
+ , we have 
+\begin_inset Formula $x\leq F(x)\leq F(\alpha)$
+\end_inset
+
+, thus 
+\begin_inset Formula $F(\alpha)$
+\end_inset
+
+ is a upper bound for 
+\begin_inset Formula $H$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha\leq F(\alpha)$
+\end_inset
+
+ since 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the least upper bound.
+ 
+\end_layout
+
+\begin_layout Proof
+Now, 
+\begin_inset Formula $F$
+\end_inset
+
+ is order-preserving, then 
+\begin_inset Formula $F(\alpha)\leq F(F(\alpha))$
+\end_inset
+
+, which implies that 
+\begin_inset Formula $F(\alpha)\in H$
+\end_inset
+
+, hence 
+\begin_inset Formula $F(\alpha)\leq\alpha$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $F(\alpha)=\alpha$
+\end_inset
+
+, then 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is a fixpoint.
+ Suppose 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ is a fixpoint of 
+\begin_inset Formula $F$
+\end_inset
+
+, then 
+\begin_inset Formula $x_{0}\leq F(x_{0})=x_{0}$
+\end_inset
+
+, therefore 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ is in 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $x_{0}\leq\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The proof for the Dual statement is similar.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{thm} Let $P$ be an partially ordered set.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item If $P$ is a lattice and every order-preserving map $F:
+\backslash
+,P 
+\backslash
+rightarrow P$ has a fixpoint, then $P$ is a complete lattice.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item If every order-preserving map $F:
+\backslash
+,P 
+\backslash
+rightarrow P$ has a least fixpoint, then $P$ is a CPO.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The proof for this theorem is quite complicated, it can be found in 
+\begin_inset LatexCommand cite
+key "2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+CPOs and Topology
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{defn} Let $X$ be a set and $
+\backslash
+tau$ be a collection of subsets of $X$ such that
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $X,
+\backslash
+phi 
+\backslash
+in 
+\backslash
+tau$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item arbitrary union of elements of $
+\backslash
+tau$ is in $
+\backslash
+tau$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item finite intersection of elements of $
+\backslash
+tau$ is in $
+\backslash
+tau$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+Then $
+\backslash
+tau$ is called a topology on $X$ and $X$ is a topological space.
+ A subset  $S$ of $X$ in $
+\backslash
+tau$ is said to be open, a subset $F$ of $X$ is said to be closed if $
+\backslash
+exists S 
+\backslash
+subseteq X$ and $S 
+\backslash
+in 
+\backslash
+tau$ such that $F=X 
+\backslash
+setminus S$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{defn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $X,\, Y$
+\end_inset
+
+ be topological spaces, and let 
+\begin_inset Formula $f:X\rightarrow Y$
+\end_inset
+
+ be a map, then 
+\begin_inset Formula $f$
+\end_inset
+
+ is said to be continuous if 
+\begin_inset Formula $f^{-1}(F)$
+\end_inset
+
+ is closed in 
+\begin_inset Formula $X$
+\end_inset
+
+ for all closed subsets 
+\begin_inset Formula $F$
+\end_inset
+
+ of 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{thm} Let $P$ be a CPO.
+ Let $
+\backslash
+mathcal{F}$ be a collection of subsets $U$ of P such that $U 
+\backslash
+in O(P)$ and $
+\backslash
+bigsqcup D 
+\backslash
+in U$ whenever $D$ is a directed subset of $U$.
+ Then
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item $
+\backslash
+mathcal{F}$ is a topology of $X$.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+item Let $P$ and $Q$ be topologized as above.
+ Then the map $
+\backslash
+varphi : P 
+\backslash
+rightarrow Q$ is topologically continuous if and only if it is continuous
+ in the CPO sense.
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Clearly, 
+\begin_inset Formula $\textrm{\O}\,\in\mathcal{F}$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\textrm{\O}\neq D\subseteq U$
+\end_inset
+
+, let 
+\begin_inset Formula $D$
+\end_inset
+
+ be directed in 
+\begin_inset Formula $U$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $P\in O(P)$
+\end_inset
+
+ is trivial.
+ Let 
+\begin_inset Formula $D\subseteq P$
+\end_inset
+
+ be directed, since 
+\begin_inset Formula $P$
+\end_inset
+
+ is a CPO, 
+\begin_inset Formula $\sqcup D$
+\end_inset
+
+ exists in 
+\begin_inset Formula $P$
+\end_inset
+
+, hence 
+\begin_inset Formula $P\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ be an index set and let 
+\begin_inset Formula $U_{\alpha}\in\mathcal{F}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha\in\Lambda$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\bigcap=\bigcap_{\alpha\in\Lambda}U_{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x\in\bigcap$
+\end_inset
+
+, 
+\begin_inset Formula $y\in P$
+\end_inset
+
+ and 
+\begin_inset Formula $y<x$
+\end_inset
+
+.
+ Then 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $x\in\bigcap\Rightarrow\forall\alpha\in\Lambda\,,x\in U_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\Rightarrow y\in U_{\alpha}\;\forall\alpha\in\Lambda$
+\end_inset
+
+ since 
+\begin_inset Formula $U_{\alpha}$
+\end_inset
+
+ are down-sets.
+\end_layout
+
+\begin_layout Proof
+Hence, 
+\begin_inset Formula $y\in\bigcap$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\bigcap\in O(P)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D\subseteq\bigcap$
+\end_inset
+
+ be directed, then
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $D\subseteq U_{\alpha}\;\forall\alpha\in\Lambda\Rightarrow\bigsqcup D\in U_{\alpha}\;\forall\alpha\;\Rightarrow\bigsqcup D\in\bigcap$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Hence, arbitrary intersections of 
+\begin_inset Formula $U_{\alpha}$
+\end_inset
+
+ is still in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+.
+ Now we shall prove that finite union of 
+\begin_inset Formula $U_{n}$
+\end_inset
+
+ is still in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x\in\bigcup_{n=1}^{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $y\leq x$
+\end_inset
+
+, where 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\Rightarrow\exists k\in\{1,2,\ldots,N\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x\in U_{k}$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow\; y\in U_{k}\;\Rightarrow\; y\in\bigcup_{n=1}^{N}U_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Hence, 
+\begin_inset Formula $\bigcup_{n=1}^{N}U_{n}$
+\end_inset
+
+ is a down-set.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D\subseteq\bigcup_{n=1}^{N}U_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 1: 
+\begin_inset Formula $\exists k\in\{1,2,\ldots,N\}$
+\end_inset
+
+ such that 
+\begin_inset Formula $D\subseteq U_{k}$
+\end_inset
+
+, then 
+\begin_inset Formula $\bigsqcup D\in\bigcup_{n=1}^{N}U_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 2: 
+\begin_inset Formula $\exists k_{1},k_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $U_{k_{1}}\bigcap D\neq\textrm{\O}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{k_{2}}\bigcap D\neq\textrm{\O}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We shall prove that the second case is impossible.
+\end_layout
+
+\begin_layout Proof
+Consider 
+\begin_inset Formula $D\subseteq U_{1}\bigcup U_{2}=U_{1}\bigcup(U_{2}\setminus(U_{1}\bigcap U_{2}))$
+\end_inset
+
+, 
+\begin_inset Formula $x,y\in U_{1}\bigcup U_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $z\in\{x,y\}^{u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider 
+\begin_inset Formula $x,y\in U_{1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Case 1: 
+\begin_inset Formula $z\in U_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 2: 
+\begin_inset Formula $z\in U_{2}\;\Rightarrow x,y\in U_{1}\bigcap U_{2}\;\Rightarrow x,y\in U_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider 
+\begin_inset Formula $x,y\in U_{2}\setminus(U_{1}\bigcap U_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 1: 
+\begin_inset Formula $z\in U_{1}\;\Rightarrow x,y\in U_{1}\;\;\divideontimes$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 2: 
+\begin_inset Formula $z\in U_{2}\;\Rightarrow x,y,z\in U_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $x\in U_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y\in U_{2}\setminus(U_{1}\bigcap U_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 1: 
+\begin_inset Formula $z\in U_{1}\;\Rightarrow y\in U_{1}\;\;\divideontimes$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Case 2: 
+\begin_inset Formula $z\in U_{2}\;\Rightarrow x\in U_{2}\;\Rightarrow x\in U_{1}\bigcap U_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+To sum up, 
+\begin_inset Formula $\forall x,y\in D,$
+\end_inset
+
+ we have either 
+\begin_inset Formula $x,y\in U_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $x,y\in U_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\therefore$
+\end_inset
+
+ either 
+\begin_inset Formula $D\subseteq U_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $D\subseteq U_{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\therefore\ U_{1}\bigcup U_{2}\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Suppose the above statement is true for 
+\begin_inset Formula $\bigcup_{n=1}^{k}U_{n}$
+\end_inset
+
+ for any 
+\begin_inset Formula $U_{n}\in\mathcal{F}$
+\end_inset
+
+, consider 
+\begin_inset Formula $\bigcup_{n=1}^{k+1}U_{n}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset of 
+\begin_inset Formula $\bigcup_{n=1}^{k+1}U_{n}$
+\end_inset
+
+, since 
+\begin_inset Formula $\bigcup_{n=1}^{k}U_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{k+1}$
+\end_inset
+
+ are both in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+, by induction hypothesis, we have either 
+\begin_inset Formula $D\subseteq\bigcup_{n=1}^{k}U_{n}$
+\end_inset
+
+ or 
+\begin_inset Formula $D\subseteq U_{k+1}$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\bigsqcup D\in\bigcup_{n=1}^{k+1}U_{n}$
+\end_inset
+
+, which implies it is in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Proof
+Hence, finite unions of 
+\begin_inset Formula $U_{n}$
+\end_inset
+
+ is still in 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Proof
+Therefore, 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is a topology on 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ In fact, it is called the Scott topology.
+\end_layout
+
+\begin_layout Proof
+Now we prove the second theorem.
+\end_layout
+
+\begin_layout Proof
+Say 
+\begin_inset Formula $\varphi:P\rightarrow Q$
+\end_inset
+
+ is topologically continuous.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x,y\in P$
+\end_inset
+
+ such that 
+\begin_inset Formula $x\leq y$
+\end_inset
+
+.
+ And 
+\begin_inset Formula $\varphi(x),\varphi(y)\in Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider 
+\begin_inset Formula $\downarrow\varphi(y)\subseteq Q$
+\end_inset
+
+.
+ It is a down-set and let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset of it, then by definition 
+\begin_inset Formula $\varphi(y)$
+\end_inset
+
+ is an upper bound for 
+\begin_inset Formula $D$
+\end_inset
+
+, hence 
+\begin_inset Formula $\bigsqcup D\leq\varphi(y)\Rightarrow\bigsqcup D\in\downarrow\varphi(y)$
+\end_inset
+
+.
+ Therefore, it is in 
+\begin_inset Formula $\mathcal{F_{Q}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is topologically continuous, 
+\begin_inset Formula $\varphi^{-1}(\varphi(y))\in\mathcal{F_{P}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $y\in\varphi^{-1}(\varphi(y))\;\Rightarrow x\leq y\in\varphi^{-1}(\varphi(y))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\Rightarrow\varphi(x)\in\downarrow\varphi(y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\Rightarrow\varphi(x)\leq\varphi(y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\therefore$
+\end_inset
+
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $S\subseteq P$
+\end_inset
+
+ be directed, since 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving, we have 
+\begin_inset Formula $\varphi(S)$
+\end_inset
+
+ is directed in 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigsqcup\varphi(S)\leq\varphi(\bigsqcup S)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Now consider 
+\begin_inset Formula $S\subseteq F=\varphi^{-1}(\downarrow\bigsqcup\varphi(S))\subseteq P$
+\end_inset
+
+, if 
+\begin_inset Formula $F$
+\end_inset
+
+ is empty, then 
+\begin_inset Formula $S$
+\end_inset
+
+ is also empty, hence 
+\begin_inset Formula $\bigsqcup\varphi(\textrm{\O})=\varphi(\bigsqcup\textrm{\O})=\bot_{Q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $F$
+\end_inset
+
+ is non-empty, then 
+\begin_inset Formula $F$
+\end_inset
+
+ is in 
+\begin_inset Formula $\mathcal{F_{P}}$
+\end_inset
+
+ since 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is topologically continuous, then 
+\begin_inset Formula $\bigsqcup S$
+\end_inset
+
+ exists in 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\varphi(\bigsqcup S)\in\downarrow\bigsqcup\varphi(S)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Therefore 
+\begin_inset Formula $\varphi(\bigsqcup S)\leq\bigsqcup\varphi(S)\;\Rightarrow\varphi(\bigsqcup S)=\bigsqcup\varphi(S)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Hence 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous in the CPO sense.
+\end_layout
+
+\begin_layout Proof
+Conversely, say 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous in the CPO sense, then 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $U\in\mathcal{F_{Q}}$
+\end_inset
+
+, consider 
+\begin_inset Formula $\varphi^{-1}(U)\subseteq P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $x\in\varphi^{-1}(U)$
+\end_inset
+
+, 
+\begin_inset Formula $y\in P$
+\end_inset
+
+ and 
+\begin_inset Formula $y\leq x$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is order-preserving, we have 
+\begin_inset Formula $\varphi(y)\leq\varphi(x)$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $\varphi(x)\in U\in O(Q)$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\varphi(y)\in U$
+\end_inset
+
+, hence 
+\begin_inset Formula $y\in\varphi^{-1}(U)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Therefore 
+\begin_inset Formula $\varphi^{-1}(U)$
+\end_inset
+
+ is a down-set.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be a directed subset of 
+\begin_inset Formula $\varphi^{-1}(U)$
+\end_inset
+
+.
+ Consider 
+\begin_inset Formula $\varphi(\bigsqcup D)=\bigsqcup\varphi(D)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $D\subseteq\varphi^{-1}(U)$
+\end_inset
+
+ and 
+\begin_inset Formula $D$
+\end_inset
+
+ is directed, we have 
+\begin_inset Formula $\varphi(D)\subseteq U$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi(D)$
+\end_inset
+
+ is directed.
+ Therefore 
+\begin_inset Formula $\bigsqcup\varphi(D)$
+\end_inset
+
+ exists in 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\bigsqcup D$
+\end_inset
+
+ exists in 
+\begin_inset Formula $\varphi^{-1}(U)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Therefore, 
+\begin_inset Formula $\varphi^{-1}(U)\in\mathcal{F_{P}}$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is topologically continuous.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "1"
+
+\end_inset
+
+Introduction to lattices and order, 2nd Edition, B.
+ A.
+ Davey and H.
+ A.
+ Priestley.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "2"
+
+\end_inset
+
+Chain-complete posets and directed sets with applications, Algebra Universalis
+ 6 (1976), 53-68.
+ G.
+ Markowsky.
+\end_layout
+
+\end_body
+\end_document

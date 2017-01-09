@@ -1,0 +1,6 @@
+primitives.c/.h	Atomic instructions
+ADTs/		FIFO queues
+lockfree/	lock-free implementations
+lock_based/	lock-based implementations
+smash/		SMASH
+

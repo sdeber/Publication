@@ -1,0 +1,1 @@
+gcc -lpthread mutex_test.c ../mutex.c ../../ADTs/Fifo.c ../../primitives.c ../../smash/SharedFine/scheduler.c ../../smash/SharedFine/cthread.c ../../smash/SharedFine/kernelthread.c ../../ADTs/spinlock.c

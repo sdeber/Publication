@@ -1,0 +1,961 @@
+%% LyX 1.5.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\noun}[1]{\textsc{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section} %% Comment out for sequentially-numbered
+\numberwithin{figure}{section} %% Comment out for sequentially-numbered
+  \theoremstyle{plain}
+  \newtheorem{thm}{Theorem}[section]
+  \theoremstyle{definition}
+  \newtheorem{defn}[thm]{Definition}
+  \theoremstyle{plain}
+  \newtheorem{lem}[thm]{Lemma}
+  \theoremstyle{remark}
+  \newtheorem{rem}[thm]{Remark}
+  \theoremstyle{plain}
+  \newtheorem{cor}[thm]{Corollary}
+  \theoremstyle{remark}
+  \newtheorem*{rem*}{Remark}
+
+\usepackage{babel}
+\makeatother
+
+\begin{document}
+
+\title{Lattices, CPOs and Fixpoint theorems}
+
+
+\author{Li Lin ID:0300211}
+
+\maketitle
+\tableofcontents{}
+
+\newpage{}
+
+
+\section{Background}
+
+\begin{defn}
+A relation$\preceq$ is a partial order on a set \emph{S} if $\forall\; a,\, b,\, c\,\in S,$
+\end{defn}
+\begin{enumerate}
+\item $a\preceq a$ ~(reflexivity) 
+\item $a\preceq b\;\&\; b\preceq a\Rightarrow a=b$ ~(anti-symmetry)
+\item $a\,\preceq\, b\;\&\; b\,\preceq\, a\;\Rightarrow\, a=b$ ~(transitivity) 
+\end{enumerate}
+And \emph{$(S,\preceq)$} is called a partially ordered set. 
+
+\begin{defn}
+Let $S$ be a partially ordered set, then the dual of $S$, denoted
+by $S^{\partial}$, is a partially ordered set such that if $a\,\leq\, b$
+in $S$ then $a\,\geq\, b$ in $S^{\partial}$. 
+\end{defn}
+We can use similar idea to define the dual statement of a statement
+$\Phi$ about partially ordered sets: given A statement $\Phi$ about
+partially ordered sets, then the dual statement $\Phi^{\partial}$
+is obtained by replacing every occurrence of $\leq$ with $\geq$.
+For example, consider the statement $\Phi$: let $S$ be a partially
+ordered set, $a\,\in\, X$ and $A\subseteq S$ , then $x\,\in\, A$
+if $x\,\leq\, a$. then its dual statement would be {}``let $S$
+be a partially ordered set, $a\,\in\, X$ and $A\subseteq X$, then
+$x\,\in\, A$ if $x\,\geq\, a$.
+
+\theoremstyle{definition}
+\newtheorem{dual}[thm]{The Dual Priciple}
+
+\begin{dual} Given a statement $\Phi$ which is true in all partially ordered sets, then its dual statement $\Phi^{\partial}$ is also ture in all partially ordered sets  \end{dual}
+
+Let $S$ be a partially ordered set and $Q$ be a subset of $S$,
+then $a\,\in\, Q$ if a \emph{maxima}l element of $Q$ if $x\,\in\, Q$,
+$a\,\leq\, x$($a\,\geq\, x)$ implies $a\,=\, x$. And $a$ is called
+a \emph{greatest} element if $\forall\, x\,\in\, Q$, $x\,\leq\, a$($x\,\geq\, a)$.
+Dually, $a$ is called a \emph{minimal/least} element. Clearly the
+greatest element is always a maximal element, then the converse may
+not be true because there may exist some elements that are not related
+to $a$ in the set. An \emph{upper bound} $y\,\in\, S$ of $Q$ is
+an element such that $\forall\, x\,\in\, Q$, $x\,\leq\, y$, dually
+$y$ is called a lower bound of $Q$. And let $Q^{u}$ be the set
+of upper bound of $Q$, then $y$ is called the supremum of $Q$ if
+$y$ is the least element of $Q^{u}$, dually $y$ is called the infimum
+of $Q$.
+
+\begin{defn}
+Let S be a partially ordered set, then S is a chain (or totally ordered
+set) if $\forall\; a,\, b\in S,$ either $a\,\leqslant\, b\,\,\, or\,\,\, b\,\leqslant\, a$.
+$S$ is called an antichain if $a\,\leqslant\, b$ iff $a\,=\, b$. 
+\end{defn}
+
+
+\begin{defn}
+Let $S$ be a partially ordered set and $a\,,b\,\in S$, then $a$
+is said to be covered by $b$ , denoted by $a\,\leftarrowtail\, b$,
+if $a\,<\, b$ and $a\,\leqslant\, c\,<b\,\Longrightarrow\, a\,=\, c$ 
+\end{defn}
+
+
+\begin{defn}
+Let $S$ be a partially ordered set, and $Q\subseteq S$, then $Q$
+is a down-set or order ideal if $x\,\in\, Q$, $y\,\in\, S$ and $y\leq x$
+then $y\,\in\, Q$. Dually $Q$ is called a up-set or order filter. 
+\end{defn}
+
+
+\begin{defn}
+Let $P$ and $Q$ be partially ordered sets, then a map $\varphi\,:\, P\rightarrow Q$
+is said to be
+\end{defn}
+\begin{enumerate}
+\item an order-preserving if $x\,\leq\, y$ in $P$ implies $\varphi(x)\,\leq\,\varphi(y)$
+in $Q$.
+\item an order-embedding if $x\,\leq\, y$ in $P$ if and only if $\varphi(x)\,\leq\,\varphi(y)$
+in $Q$.
+\item an order-isomorphism if it is an order-embedding and bijective.
+\end{enumerate}
+
+\section{Lattices}
+
+\begin{defn}
+Let $P$ be a non-empty ordered set, if $\forall\, x,y\,\in\, P$,
+$x\,\vee\, y=\sup\{x,y\}$ and $x\,\wedge\, y=\inf\{x,y\}$ exist
+in P, then $P$ is called a lattice. $P$ is a complete lattice if
+$\forall\, S\subseteq P$, $\bigvee S$ and $\bigwedge S$ exist in
+$P$.
+\end{defn}
+
+
+Alternatively, a lattice can be considered to be a algebraic structure.
+
+\theoremstyle{definition}
+\newtheorem{altdef}[thm]{Alternative definition of lattices}
+\begin{altdef} Let S be a partially ordered set and $\vee$ and $\wedge$ be two binary operators defined on S such that:
+\begin{enumerate} 
+\item $(a \vee b) \vee c = a \vee (b \vee c)$
+\item $(a \wedge b) \wedge c = a \wedge (b \wedge c)$ 
+\item $a \vee b = b \vee a$
+\item $a \wedge b = b \wedge a$
+\item $a \vee a = a$
+\item $a \wedge a = a$
+\item $a \vee (a \wedge b) = a$
+\item $a \wedge (a \vee b) = a$
+\end{enumerate}\end{altdef}
+
+It is can be proved that the above two definitions are identical.
+
+\theoremstyle{definition}
+\newtheorem{cl}[thm]{Connecting Lemma}
+\begin{cl} Let $L$ be a lattice and $a,b \, \in \, L$, then
+\begin{enumerate}
+\item $a \, \leq \, b$
+\item $a \vee b = b$
+\item $a \wedge b = a$ 
+\end{enumerate}
+are equivalent.
+\end{cl}
+
+\begin{proof}
+(1)$\Rightarrow$(2), $a\leq b$ and $b\leq b$ imply $b\in\{a,b\}^{u}$.
+And $b\leq x\;\;\forall x\in\{a,b\}^{u}\Rightarrow b=a\vee b$. (2)$\Rightarrow$(3),
+$a\vee b=b\Rightarrow a\leq b\Rightarrow a$ is a lower bound for
+$\{a,b\}$. But $y\leq a$ for all lower bound $y$ of $\{a,b\}$.
+Hence $a=a\wedge b$. (3)$\Rightarrow(1)$ is trivial. 
+\end{proof}
+
+
+\begin{lem}
+Let $P$ be a lattice, $a,b,c,d\,\in\, P$, then 
+
+1. $a\,\leq\, b$ implies $a\vee c\,\leq\, b\vee c$ and $a\wedge c\,\leq\, b\wedge c$
+
+2. $a\,\leq\, b$ and $c\,\leq\, d$ implies $a\vee c\,\leq\, b\vee d$
+and $a\wedge c\,\leq\, b\wedge d$
+\end{lem}
+\begin{proof}
+(1) consider $b\vee c$, $b\:,c\leq b\vee c\Rightarrow a\leq b\leq b\vee c$
+and $c\leq b\vee c$. Hence $b\vee c\in\{a,c\}^{u}$, then $a\vee c\leq b\vee c$.
+Now consider $a\wedge c$, $a,\, c\geq a\wedge c\Rightarrow b\,,c\geq a\wedge c$.
+Therefore $a\wedge c$ is a lower bound for $\{b\;,c\}$. Hence, $a\wedge c\leq b\wedge c$.
+
+(2) Consider $b\vee d$, we have $a\leq b\leq b\vee d$ and $c\leq d\leq b\vee d$,
+therefore, $b\vee d$ is a upper bound for $\{a,c\}$, hence $a\vee c\leq b\vee d$.
+Now consider $a\wedge c\leq a,\, c$, then $a\wedge c\leq b,\, d$,
+then $a\wedge c$ is a lower bound for $\{b,d\}$. Hence $a\wedge c\leq b\wedge d$. 
+\end{proof}
+\begin{defn}
+Let $L$ be a lattice, then $L$ has a \emph{\noun{one }}if $\exists\,1\,\in\, L$
+such that $\forall\, a\,\in\, L$, $a\wedge1\,=\, a$ and $L$ has
+a \emph{\noun{zero }}if $\exists\,0\,\in\, L$ such that $a\vee0\,=\, a$.
+\end{defn}
+\begin{lem}
+Complete lattices have both 1 and 0.
+\end{lem}
+\begin{proof}
+Let $P$ be a complete lattice, then $\forall S\subseteq P$, $\bigvee S$
+exists in $P$. Now consider $\textrm{S=\O}\subseteq P$ and let $a\in P$
+be any element. Then we can say that $\forall,x\in\textrm{\O},$$x\leq a$,
+because there is no element $x$ in $\textrm{\O}$ such that $x>a$
+or $x$ is not related to $a$. Hence, we have $P=\textrm{\O}^{u}$.
+since $\bigvee\textrm{\O}=\sup\{\textrm{\O\}}$ exists in $P$, $P$
+has a bottom element 0. 
+
+Similarly, we can prove that $P$ has a top element 1.
+\end{proof}
+\begin{defn}
+Let $L$ be a lattice and $\textrm{\O}\neq M\subseteq L$, them $M$
+is a sublattice of $L$ if $\forall\, a,b\,\in M$, $a\vee b\in M$
+and $a\wedge b\in M$. 
+\end{defn}
+\begin{rem}
+It is possible that $M$ itself is a lattice but is not a sublattice
+of $L$. 
+\end{rem}
+\begin{defn}
+Let $L,\: K$ be lattices, a map $f\,:\, L\rightarrow K$ is said
+to be a homomorphism if $f(a\vee b)=f(a)\vee f(b)$ and $f(a\wedge b)=f(a)\wedge f(b)\;\;\forall a,b\in L$. 
+
+$f$ is an isomorphism if $f$ is bijective.
+\end{defn}
+\begin{lem}
+f(L) is a sublattice of K
+\end{lem}
+\begin{proof}
+Let $x,y\in f(L)$, then $\exists a,b\in L$ such that $f(a)=x$ and
+$f(b)=y$. 
+
+Now consider $x\vee y=f(a)\vee f(b)$, since $f$ is a homomorphism,
+we have $f(a)\vee f(b)=f(a\vee b)\in f(L)$, therefore $x\vee y\in f(L)$.
+Similarly, we can prove that $x\wedge y\in f(L)$. Hence $f(L)$ is
+a sublattice of $K$. 
+\end{proof}
+\begin{lem} Let $L, \, K$ be lattices and let $f:\, L\rightarrow K$ be a map. Then the following statements are equivalent.
+\begin{enumerate}
+\item $f$ is order-preserving.
+\item $f(a) \vee f(b) \leq f(a \vee b)$.
+\item $f(a \wedge b) \leq f(a) \wedge f(b)$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+(1)$\Rightarrow$(2). $a\,,b\leq a\vee b$ and $f$ is order-preserving
+$\Rightarrow$ $f(a)\,,f(b)\leq f(a\vee b)$. Therefore $f(a\vee b)$
+is an upper bound for $\{f(a)\,,f(b)\}$. Hence $f(a)\vee f(b)\leq f(a\vee b)$.
+
+(2)$\Rightarrow$(3). It holds because of the Dual Principal.
+
+(3) $\Rightarrow$(1). Let $a\,,b\in L$ with $a\leq b$, then $a=a\wedge b$,
+by hypothesis, $f(a)=f(a\wedge b)\leq f(a)\wedge f(b)\leq f(b)$. 
+\end{proof}
+
+
+\begin{defn} Let $L$ be a lattice. A non-empty subset $J$ of $L$ is called an ideal if
+\begin{enumerate}
+\item $\forall a, b \in J, a\vee b \in J$.
+\item $a \in L, b \in J$ and $a \leq b$ imply $a \in J$.
+\end{enumerate}
+\end{defn}
+\begin{defn} Let $L$ a lattice. A non-empty subset $G$ of $L$ is called a filter if
+\begin{enumerate}
+\item $\forall a,b \in G, a \wedge b \in G$.
+\item $a \in L, b \in G$ and $a \geq b$ imply $a \in G$.
+\end{enumerate}
+\end{defn}
+
+\begin{lem} Let $P$ be a lattice, let $S, \, T \subseteq P$. Suppose that $\vee S,\; \vee T,\; \wedge S,\; \wedge T$ exist in $P$ then
+\begin{enumerate}
+\item $\vee(S \cup T) = (\vee S) \vee (\vee T)$.
+\item $\wedge(S \cup T) = (\wedge S) \wedge (\wedge T)$
+\end{enumerate}
+\end{lem}
+
+
+
+\begin{defn}
+Let $P$ and $Q$ be partially ordered sets and $\varphi:\, P\rightarrow Q$
+be a map such that $\varphi(\vee S)=\vee\varphi(S)$ for $\vee S$
+exists in $P$. Then $\varphi$ is said to preserve existing joins.
+Dually, $\varphi$ preserves the existing meets.
+\end{defn}
+
+
+\begin{lem} Let $P$ and $Q$ be partially ordered sets, and $\varphi :\, P \rightarrow Q$ be an order-preserving map. Then
+\begin{enumerate}
+\item Suppose that $S \subseteq P$ such that $\vee S$ exists in $P$ and $\vee \varphi (\vee S)$ exists in $Q$, then $\varphi (\vee S) \geq \vee \varphi (S)$. Dually, $\varphi (\wedge S) \leq \wedge \varphi (S)$.
+\item if $\varphi$ is an order-isomorphism, then $\varphi$ preserves all existing joins and meets.
+\end{enumerate}
+\end{lem}
+
+
+
+\begin{lem}
+Let $P$ be a partially ordered set, $Q\subseteq P$ with the same
+order, let $S\subseteq Q$, then if $\vee_{P}S$ exists and is in
+Q then $\vee_{Q}S$ exists and $\vee_{P}S=\vee_{Q}S$. Dually it is
+true for $\wedge_{P}S$ and $\wedge_{Q}S$.
+\end{lem}
+\begin{proof}
+Suppose $\vee_{p}S$ exists and it is in $Q$, then for all $x\in S$,
+$x\leq\vee_{P}S$. Since $\vee_{p}S$ is in $Q$, it is an upper bound
+for $S$ in $Q$. Let $y$ be any upper bound for $S$ in $Q$. Then
+it is an upper bound for $S$ in $P$. Then $y\leq\vee_{p}S$. Hence
+$\vee_{p}S=\vee_{Q}S$. 
+\end{proof}
+
+
+\begin{lem}
+Let $P$ be an partially ordered set such that $\forall\, S\subseteq P$
+and $S\neq\phi$, $\bigwedge S$ exists in $P$ for every non-empty
+subset $S$, then $\bigvee S$ exists in $P$ for every subset $S$
+of $P$ which has an upper bound in $P$.
+\end{lem}
+\begin{proof}
+Let $S\subseteq P$ and $S$ has an upper bound in $P$, therefore
+$S^{u}\neq\textrm{\O}$. By hypothesis, $\alpha=\bigwedge S^{u}$
+exists in $P$. Consider $x\in S$, then $x\leq y\quad\forall y\in S^{u}$,
+therefore, $x$ is a lower bound for $S^{u}$, then $x\leq\alpha$
+since $\alpha$ is the greatest lower bound. Hence, $\alpha$ is an
+upper bound for $S$. Finally, $\bigvee S=\alpha$.
+\end{proof}
+
+
+\begin{thm} Let $P$ be a non-empty partially ordered set, then the following statements are equivalent.
+\begin{enumerate}
+\item $P$ is a complete lattice.
+\item $\wedge S$ exists in $P$, $\forall S \subseteq P$.
+\item $P$ has a top element, and $\wedge S$ exists in $P$ $\forall S \subseteq P, \,S \neq \varphi$
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+$(1)\Rightarrow(2)$ is trivial, it follows the definition of complete
+lattices. 
+
+Now we show that $(2)\Rightarrow(3)$. Consider $\textrm{\O}\subseteq P$,
+then $\wedge\textrm{\O}$ exists in $P$. Let $p\in P$, then there
+is no element $x$ in $\textrm{\O}$ such that $x\nleq p$, hence
+every element $p\in P$ is a lower bound for $\textrm{\O}$. Therefore
+$\wedge\textrm{\O}$ exists in $P$ and $\forall\, p\in P$, $p\leq\wedge\textrm{\O}$,
+hence $\top$= $\wedge\textrm{\O}$.
+
+Now we show that $(3)\Rightarrow(1)$. Let $P\subseteq P$ and $P\neq\textrm{\O}$,
+then $\wedge P$ exists in $P$. Let $\bot=\wedge P$, clearly for
+$\textrm{\O}\subseteq P$, $\vee\textrm{\O}=\top$ and since $\bot$exists
+in $P$, $\wedge\textrm{\O}=\bot$. 
+
+Let $S\subseteq P$ and $S\neq\textrm{\O}$, by hypothesis $\wedge S\in P$.
+Consider $\vee S$. since $\top\,\in P$, S has a upper bound, $\therefore$
+$S^{u}\neq\textrm{\O}$, hence $\wedge S^{u}$exists in $P$ and $\vee S=\wedge S^{u}$.
+
+To sum up, $P$ is a complete lattice.
+\end{proof}
+
+
+\begin{defn}
+Let $P$ be an ordered set. If $C=\{c_{0},c_{1},\ldots,c_{n}\}$ is
+a finite chain in $P$ with $|C|=n+1$, then $C$ is said to have
+length $n$. $P$ have length $n$ if the length of the longest chain
+in $P$ is $n$. $P$ is of finite length if it has a length $n\in\mathbb{N}$,
+and it has no infinite chains if every chain in $P$ is finite. 
+
+$P$ satisfies the Ascending Chain Condition if given any sequence
+$x_{1}\leq x_{2}\cdots\leq x_{n}\leq\cdots$ in $P$, $\exists\, k\in\mathbb{N}$
+such that $x_{i}=x_{k}$ $\forall i=k,\: k+1,\:\ldots$ . Dually,
+$P$ satisfies the Descending Chain Condition.
+\end{defn}
+
+\section{Complete partially ordered sets}
+
+\begin{defn}
+Let $P$ be a partially ordered set and $\textrm{\O}\neq S\subseteq P$,
+then $S$ is said to be directed if $\forall\, x,\, y\in S$, $\exists\, z\in S$
+such that $z\,\in\{x,\, y\}^{u}$. 
+\end{defn}
+
+
+If $D$ is a directed subset of $P$, we write $\bigvee D$ as $\bigsqcup D$
+if it exists.
+
+\begin{cor}
+$S$ is directed in $P$ if and only if $\forall F\subseteq S,$ $|F|<\infty$,
+$\exists\, z\in S$ such that $z\in F^{U}$.
+\end{cor}
+\begin{proof}
+Say $S$ is directed, then $\forall x,y\in S,$ $\exists z\in S$
+such that $z\in\{x,y\}^{u}$. Suppose this is true for $F\subseteq S$
+such that $|F|=k$, consider $F\bigcup\{s\}$ where $s\in S$. Suppose
+$a,b\in F\bigcup\{s\}$. If $a,b\in F$ then the proof is done. If
+$a=s$, by induction hypothesis, $\exists z\in S$ such that $z\in F^{u}$,
+and since $S$ is directed, $\exists z_{1}\in S$ such that $z_{1}\in\{s,z\}^{u}$.
+Hence $z_{1}\in\{F\bigcup\{s\}\}^{u}$.
+
+Conversely, say $\forall F\subseteq S$, $F$ is finite, $\exists z\in S$
+such that $z\in F^{u}$. Then in particular it is true for $\{x,y|x,y\in S\}$.
+\end{proof}
+
+
+\begin{defn} Let $P$ be a partially ordered set, then $P$ is a complete partially ordered set(CPO) if 
+\begin{enumerate}
+\item $P$ has bottom element $\bot$.
+\item $\bigsqcup D$ exists for each directed subset $D$ of $P$.
+\end{enumerate}
+$P$ is a pre-CPO if it satisfies the second property.
+\end{defn}
+
+\begin{defn} Let $P$ be a CPO, $Q\subseteq P$, then $Q$ is a subCPO of  $P$  if 
+\begin{enumerate}
+\item $\bot \in Q$
+\item if $D \subseteq Q$ is a directed in $Q$, then $\bigsqcup_{Q} D$ exists and $\bigsqcup_{Q} D = \bigsqcup_{P} D$
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Let $P$and $Q$ be pre-CPOs, let $\varphi:\, P\rightarrow Q$ be
+a map from $P$ to $Q$, then $\varphi$ is continuous if $\forall\, D\subseteq P$
+directed in $P$, $\varphi(D)$ is directed in $Q$ and $\varphi(\bigsqcup D)=\bigsqcup_{Q}\varphi(D)$.
+If $P$ and $Q$ are CPOs and $\varphi(\bot)=\bot$, then $\varphi$
+is said to be strict.
+\end{defn}
+\begin{lem}
+Let $P$ and $Q$ be CPOs and $\varphi:\, P\rightarrow Q$, then $\varphi$
+is order-preserving iff $\forall\, D\subseteq P$ directed in $P$,
+$\varphi(D)$ is directed in $Q$ and $\sqcup\varphi(D)\leq\varphi(\sqcup D)$.
+\end{lem}
+\begin{proof}
+Let $x\,,y\in\varphi(D)$, then $\exists\, a,b\in D$ such that $\varphi(a)=x$
+and $\varphi(b)=y$. $a,b\in D\Rightarrow\exists\, c\in D$ such that
+$a\leq c$ and $b\leq c$. Now, consider $\varphi(c)\in\varphi(D),$since
+$\varphi$ is order-preserving, $\therefore$ $a\leq c$ and $b\leq c$$\Rightarrow$$\varphi(a),\,\varphi(b)\leq\varphi(c)$,
+hence $\varphi(D)$ is directed in $Q$ and $\forall\, x\in\varphi(D)$,
+$x\leq\varphi(\bigsqcup D)$. Therefore, $\bigsqcup\varphi(D)\leq\varphi(\bigsqcup D)$.
+
+Conversely, let $a\,,b\,\in P$ and $a\leq b$ , then the set $\left\{ a,\, b\right\} $
+is directed in $P$. $\therefore$ $\varphi(\{a\,,b\})$ is directed
+in $Q$ and $\bigsqcup\varphi(\{a\,,b\})\leq\varphi(\bigsqcup\{a\,,b\})=\varphi(b)$.
+Hence $\varphi(a)\leq\varphi(b)\Rightarrow\varphi$ is order-preserving.
+\end{proof}
+
+
+\begin{cor}
+Let $P$ and $Q$ be CPOs and $\varphi:\, P\rightarrow Q$ be a map,
+if $\varphi$ is continuous then it is order-preserving.
+\end{cor}
+\begin{rem*}
+Not every order-preserving map between CPOs is continuous. For example
+the map $\varphi:\,\wp(\mathbb{N})\rightarrow\wp(\mathbb{N})$
+\end{rem*}
+\begin{lem}
+Let $P$ and $Q$ be CPOs and $\varphi:\, P\rightarrow Q$ be a map,
+then $\varphi$ is continuous if $P$ satisfies (ACC).
+\end{lem}
+\begin{proof}
+Let $D$ be a directed subset in $P$, since $P$ satisfies (ACC),
+$D$ has a greatest element $\alpha=\bigsqcup D$. And $\varphi$
+is order-preserving implies $\varphi(D)$ is directed in $Q$ and
+$\bigsqcup\varphi(D)\leq\varphi(\bigsqcup D)=\varphi(\alpha)$. Since
+$\alpha\in D$, $\varphi(\alpha)\leq\bigsqcup\varphi(D)$. Hence $\bigsqcup\varphi(D)=\varphi(\bigsqcup D)$.
+Thus $\varphi$ is continuous. 
+\end{proof}
+\begin{thm}
+Let $P$ be an partially ordered set. Then $P$ is a CPO if and only
+if each chain has a least upper bound in $P$.
+\end{thm}
+\begin{proof}
+Say $P$ is a CPO, and let $C\subseteq P$ be a chain , then $\forall\, x,y\,\in C$,
+either $x\leq y$ or $y\leq x$, therefore either $x\in\{x,y\}^{u}$
+or $y\in\{x,y\}^{u}$. which implies $C$ is directed in $P$. Then
+by definition, $\bigsqcup C$ exists in $P$.
+
+To prove the converse is very complicated, I just do it for the case
+that $P$ is a countable partially ordered set.
+
+Consider $\textrm{\O}\subseteq P,$ then $\textrm{\O}$ is a chain
+in $P$. By hypothesis, $\textrm{\O}$ has a least upper bound in
+$P$, but $\textrm{\O}^{u}=P$ , therefore $\exists\,\bot\in P$ such
+that $\forall\, x\in P$, $x\geq\bot$.
+
+Now we shall prove that for every directed subset $D$ of $P$, $\bigsqcup D$
+exists in $P$.
+
+Suppose $D=\{x_{0},x_{1},\ldots,x_{n},\ldots\}$ is a directed subset
+of $P$, then for each finite subset $F$ of $D$, we fix an upper
+bound $u_{F}$ of $F$ in $D$. 
+
+Define sets $D_{i}$ as follows:
+
+\[
+D_{0}=\{x_{0}\},\;\; D_{i+1}=D_{i}\bigcup\{y_{i+1},\, u_{D_{i}\bigcup\{y_{i+1}\}}\}\]
+ where $y_{i+1}$ is the element $x_{n}$ in $D\setminus D_{i}$,
+with the subscript $n$ chosen as small as possible. 
+
+\theoremstyle{definition}
+\newtheorem{subclaim}{Claim}
+\begin{subclaim} $D_{i}$ has at least $i$ elements \end{subclaim}
+\begin{proof} $D_0 = {x_0}$ implies $D_0$ has at least 0 elements. 
+Suppose that $D_k$ has at least $k$ elements,  consider $D_{k+1}=D_k \bigcup \{y_{k+1},u_{\{D_k \bigcup {\{ y_{k+1} \}} \}}\}$.  Since $D$ is an infinite set  and $D_k$ is finite, $D \setminus D_k \neq \textrm{\O}$, therefore $y_{k+1} \in D \setminus D_k$. Hence, $D_{k+1}$ has at least $k+1$ elements. By induction, $D_i$ has at least $i$ elements.
+\end{proof}
+\begin{subclaim} $D_i$ is directed \end{subclaim}
+\begin{proof} Consider $D_0 = {x_0}$, it is directed.  Now suppose that $D_k$ is directed, consider $D_{k+1}$. \\
+Let $x, y \in D_{k+1}$.  \\
+Case 1: $x,y \in D_k$, then $\exists z \in \{x,y\}^u$ such that $z \in D_k \subseteq D_{k+1}$. \\
+Case 2: $y = y_{k+1}$, then $u_{D_k \bigcup \{y_{k+1}\}}$ is an upper bound for $D_{k+1}$. \\
+Case 3: $y = u_{D_k \bigcup \{y_{k+1}\}}$. \\
+To sum up, $D_i$ is directed.
+\end{proof}
+\begin{subclaim} $\bigvee D_i$ exists in $P$ \end{subclaim}
+\begin{proof}
+Consider $D_{k+1}$ for $k \geq 0$, then $D_{k+1} = D_k \bigcup \{y_{k+1}, u_{D_k \bigcup \{y_{k+1}\}}\}$.  \\
+Hence, $u_{D_k \bigcup \{y_{k+1}\}}$ is an upper bound for $D_k \bigcup \{y_{k+1}\}$ and $u_{D_k \bigcup \{y_{k+1}\}} \leq u_{D_k \bigcup \{y_{k+1}\}}$. \\
+Therefore $u_{D_k \bigcup \{y_{k+1}\}} = \bigvee D_i$
+\end{proof}
+\begin{subclaim} $\{\bigvee D_i\}_{i \geq 1}$ form a chain in $P$. \end{subclaim}
+\begin{proof} $D_m \subseteq D_n$ for all $m \leq n$, therefore, $\bigvee D_m \leq \bigvee D_n$. \end{proof}
+\begin{subclaim} $\sqcup \{\vee D_i\}_{i \geq 1}$ is an upper bound for $D$. \end{subclaim}
+\begin{proof}
+We first show that $x_i \in D_N,  \forall i \leq N$. \\
+$x_0 \in D_0$, hence this is true for $D_0$. \\
+Now, suppose it is ture for $n = k$. Consider $n = k+1$ \\
+$D_{k+1} = D_k \bigcup \{y_{k+1}, u_{D_k \bigcup \{y_{k+1}\}}\}$, but $x_i = y_{k+1} \in D \setminus D_k$ and $x_i$ has the smallest index. Therefore $i \geq k+1$. \\
+Case 1: $i \geq k+1$, then $x_{k+1} \in D_k \subseteq D_{k+1}$. \\
+Case 2: $i = k+1$, then $x_i \in D_{k+1}$ \\
+Therefore, by induction $x_i \in D_N$ for all $i \leq N$. \\
+Now, let $x_n \in D$, then $x_n \in D_i \subseteq D, \forall i \geq n$ \\
+$\therefore$ $x_n \leq \vee D_i \leq \bigsqcup \{{\bigvee D_i}\}_{i \geq 1} \forall n \in \mathbb{N}_{0}$. \\
+But, $\vee D_i \in D$ by definition, therefore ${\bigvee D_i} \subseteq D$ implies $\bigsqcup \{{\bigvee D_i}\} \leq x,  \forall x \in D^u$ \\
+$\therefore$ $\bigsqcup \{{\bigvee D_i}\}_{i \geq 1} = \bigsqcup D$ \\
+\end{proof}
+Hence, $P$ is a CPO.
+\end{proof}
+\begin{defn}
+Let $P$ be a partially ordered set, $F:\, P\rightarrow P$ be a self-map
+on $P$. Then $x\in P$ is a fixpoint of $F$ if $F(x)=x$. It is
+a pre-fixpoint if $F(x)\leq x$, a post-fixpoint $x\leq F(x)$. 
+
+We use $\mu(F)$ to denote the least fixpoint of $F$ and $\nu(F)$
+to denote the greatest fixpoint.
+\end{defn}
+
+
+\begin{defn}
+Let $P$ be a CPO, $Y$ be a subset of $P$ and let $F:\, P\rightarrow P$
+be a self-map on $P$. Then $F$ is said to be increasing if for all
+$x\in P$, $x\leq F(x)$. $Y$ is $F$- invariant if $F(Y)\subseteq Y$.
+\end{defn}
+
+
+\begin{lem}
+Let $P$ be a CPO, $F:\, P\rightarrow P$ be self-map on $P$, then
+there exists a $F-invariant$ subCPO $P_{0}$ of $P$ such that for
+all $F-invariant$ subCPO $P_{\alpha}$ of $P$, we have $P_{0}\subseteq P_{\alpha}$.
+\end{lem}
+\begin{proof}
+Let $C$ be the collection of all $F-invariant$ subCPO of $P$, since
+$P$ itself is a $F-invariant$ subCPO of $P$, $P\in C$, hence $C\neq\textrm{\O}$.
+
+Let $P_{\alpha}\in C$, then consider $P_{0}=\bigcap_{\alpha\in\Lambda}P_{\alpha}$
+where $\Lambda$ is an index set. We shall prove that it is a $F-invariant$
+subCPO of $P$.
+
+$P_{\alpha}$ is a subCPO of $P$, $\forall\,\alpha\in\Lambda$, then
+$\bot\in P_{\alpha}$ for all $\alpha$, hence $\bot\in P_{0}$. Let
+$D$ be a directed subset in $P_{0}$, then $D$ is directed in $P_{\alpha}$
+for all $\alpha$ and it is directed in $P$. Therefore $\sqcup_{p}D$
+exists. And since $P_{\alpha}$ is a subCPO, we have $\sqcup_{p}D\in P_{\alpha}$
+for all $\alpha\in\Lambda$. Therefore $\sqcup_{p}D\in P_{0}$. Hence
+$P_{0}$ is an $F-invariant$ subCPO of $P$. And $P_{0}\subseteq P_{\alpha}$
+for all $\alpha\in\Lambda$ by definition. 
+\end{proof}
+
+
+\theoremstyle{definition}
+\newtheorem{fpt1}[thm]{Fixpoint theorem One}
+\begin{fpt1} Let $P$ be a CPO, let $F$ be an order-preserving self-map on $P$ and let $\alpha = \sqcup_{n\geq0}F^n(\bot)$.
+\begin{enumerate}
+\item If $\alpha \in fix(F)$, then $\alpha = \mu(F)$.
+\item If $F$ is continuous, then $\mu(F)$ exists and equals $\alpha$.
+\end{enumerate}
+\end{fpt1}
+
+\begin{proof}
+(1) Since $F$ is order-preserving self-map on $P$, $\bot\leq F(\bot)$.
+Applying $F^{n}$ to $\bot$ , we have $F^{n}(\bot)\leq F^{n+1}(\bot)$
+for all $n\in\mathbb{N}$. Then we get a chain 
+
+\[
+\bot\leq F(\bot)\leq F^{2}(\bot)\ldots\leq F^{n}(\bot)\ldots\]
+
+
+in $P$. Since $P$ is a CPO, $\alpha=\bigsqcup_{n\geq0}F^{n}(\bot)$
+exists in $P$. Suppose $x_{0}$ be any fixpoint of $F$, then $F^{n}(X_{0})=x_{0}$
+for all $n\in\mathbb{N}_{0}$. And $\bot\leq x_{0}\Rightarrow F^{n}(\bot)\leq F^{n}(x_{0})$
+since $F$ is order-preserving. Therefore $\alpha\leq F^{n}(x_{0})=x_{0}\;\forall n\in\mathbb{N}_{0}$.
+Hence, if $\alpha$ is a fixpoint then it is the least fixpoint.
+
+(2) Consider $F(\alpha)=F(\bigsqcup_{n\geq0}F^{n}(\bot))$. Since
+$F$ is continuous, $F(\alpha)=\bigsqcup_{n\geq0}F(F^{n}(\bot))=\bigsqcup_{n\geq1}F^{n}(\bot)$.
+But $\bot\leq F^{n}(\bot)\;\;\forall n\in\mathbb{N}_{0}$, therefore
+$\bigsqcup_{n\geq1}F^{n}(\bot)=\bigsqcup_{n\geq0}F^{n}(\bot)=\alpha$.
+Hence $\alpha$ is a fixpoint, then by (1), it is the least fixpoint. 
+\end{proof}
+
+
+\begin{thm} Let $P$ be a partially ordered set and $F$ be an order-preserving self-map on $P$.
+\begin{enumerate}
+\item Suppose $F$ has a least pre-fixpoint $\mu_{*}(F)$. Then $F$ has a least fixpoint, and $F(x) \leq x$ implies $\mu(F) \leq x$. Also $\mu(F) = \mu_{*}(F)$.
+\item Suppose $P$ is a complete lattice, then $\mu_{*}(F)$ exists.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+(1) Suppose that $\mu_{*}(F)$ exists. Now consider $F(\mu_{*}(F))$.
+Since $\mu_{*}(F)$ is a pre-fixpoint, $F(\mu_{*}(F))\leq\mu_{*}(F)$.
+And $F$ is order-preserving implies $F(F(\mu_{*}(F)))\leq F(\mu_{*}(\mbox{F}))$.
+Therefore, $F(\mu_{*}(F))$ is also a pre-fixpoint, hence we have
+$\mu_{*}(F)\leq F(\mu_{*}(F))$. Hence, $\mu_{*}(F)=F(\mu_{*}(F))\Rightarrow\mu_{*}(F)$
+is a fixpoint. $fix(F)\subseteq pre(F)$, we have $\mu(F)=\mu_{*}(F)$.
+
+(2) Suppose $P$ is a complete lattice, then consider $\wedge pre(F)$,
+since $F$ is order-preserving, $F(\wedge pre(F))\leq F(y)\leq y\;\;\forall y\in pre(F)$.
+Therefore, $F(\wedge pre(F))\leq\wedge pre(F)$, hence $\wedge pre(F)\in pre(F)$
+and it is the least pre-fixpoint. Then by (1), $\wedge pre(F)=\mu(F)$.
+\end{proof}
+\begin{lem}
+Let $P$ be a CPO, then the increasing order-preserving self-maps
+on $P$ have a common fixpoint.
+\end{lem}
+\begin{proof}
+Let $I(P)$ be the set of all increasing order-preserving self-map
+on $P$. Since $id_{p}\in I(P)$, $I(P)\neq\textrm{\O}$. Let $F\,,G\in I(P)$
+and $x\in P$. Then $F(x)\leq F(G(x))$ since $G$ is increasing and
+$F$ is order-preserving. And $G(x)\leq F(G(x))$ since $F$ is increasing.
+Therefore $F\circ G$ is an upper bound for $\{F,G\}$ in $I(P)$.
+Hence $I(P)$ is a directed subset of the CPO $<P\rightarrow P>$
+of all order-preserving self-maps on $P$.
+
+Let $H=\sqcup I(P)$ in $<P\rightarrow P>$. Then $H$ is an order-preserving
+self-map on $P$. Let $x\in P$, consider $H(x)$. For all $F\in I(P)$,
+we have $x\leq F(x)$. And $F\leq H$ implies $F(x)\leq H(x)$. Hence,
+$x\leq H(x)$, therefore $H\in I(P)$. Also $F\circ H$ is in $I(P)$,
+therefore $F\circ H\leq H$, but $F$ is increasing implies $H\leq F\circ H$
+. Hence $H=F\circ H$. 
+
+Now, consider $x\in P$, then $H(x)=F(H(x))$, therefore $H(x)\in P$
+is a fixpoint for $F$ for all $x\in P$. 
+\end{proof}
+
+
+\theoremstyle{definition}
+\newtheorem{fpt2}[thm]{Fixpoint theorem Two}
+\begin{fpt2} Let $P$ be a CPO and let $F:\,P \rightarrow P$ be order-preserving. Then $F$ has a least fixpoint.
+\end{fpt2}
+
+
+\begin{proof}
+Define $\Phi:\wp(P)\rightarrow\wp(P)$ such that $\Phi(X)=\{\bot\}\bigcup F(X)\{\bigsqcup D\:|\: D\subseteq X\; and\; D\; is\; directed\}$
+for all $X\subseteq P$. 
+
+Now, consider $Y\subseteq X\subseteq P$, then $F(Y)\subseteq F(X)$
+and $\{\bigsqcup D\:|\: D\subseteq Y\; and\; D\; is\; directed\}\subseteq\{\bigsqcup D\:|\: D\subseteq X\; and\; D\; is\; directed\}$.
+Therefore, $\Phi$ is order-preserving, hence by Knaster-Tarski fixpoint
+theorem, it has a least fixpoint given by $P_{0}=\bigcap\{X\in\wp(P)\:|\:\Phi(X)\subseteq X\}$.
+By definition, this is the smallest $F-invariant$ subCPO of $P$.
+
+Setp 1: show that $P_{0}\subseteq post(F)$. 
+
+Let $Q=post(F)$. Clearly, $\bot\in Q$. And since $F$ is order-preserving,
+$F(Q)\subseteq Q$. Let $D$ be a directed subset of $Q$, then $\bigsqcup F(D)\leq F(\bigsqcup D)$,
+since $x\leq F(x)$ for all $x\in D$, we have $\bigsqcup D\leq\bigsqcup F(D)$,
+hence $\bigsqcup D\leq F(\bigsqcup D)$. Therefore $\bigsqcup D\in post(P)$.
+Then we have $\Phi(Q)\subseteq Q$.
+
+Step 2: If $x\in P$ is a fixpoint, then $P_{0}\subseteq\downarrow x$.
+
+Let $x$ be a fixpoint, consider $\downarrow x$, let $y\in\downarrow x$,
+then $y\leq x\Rightarrow F(y)\leq F(x)=x$, then $F(y)\in\downarrow x$,
+hence $\downarrow x$ is $F-invariant$. And it is trivial that $\downarrow x$
+is a subCPO of $P$. Thus $P_{0}\subseteq\downarrow x$. 
+
+Define $G=F|_{P_{0}}:P_{0}\rightarrow P_{0}$, Since $P_{0}$ is also
+a CPO, then $\exists a\in P_{0}$ such that $G(a)=a$ , hence $F(a)=a$.
+We need to show that $a$ is both the top of $P_{0}$ and the least
+element of $F$.
+
+Suppose that $x\in P$ is a fixpoint, then $\Phi(\downarrow x)\subseteq\downarrow x$.
+Then we have $P_{0}=\mu(\Phi)\subseteq\downarrow x$. Since $a\in P_{0}$
+and $P_{0}\subseteq\downarrow x$, we have $a\leq x$.
+\end{proof}
+
+
+\theoremstyle{definition}
+\newtheorem{fpt3}[thm]{Theorem(Fixpoint Theorem Three)}
+\theoremstyle{definition}
+\newtheorem{subclaim1}{Claim}
+\begin{fpt3} Let $P$ be a CPO and let $F$ be an increasing self-map on $P$. Then $F$ has a  fixpoint. \end{fpt3} 
+\begin{proof}
+Let $P_0$ be the smallest $F-invariant$ subCPO of $P$, a element $x_0$ in $P_0$ is called a roof of $F$ if for all $y \in P_0, y \leq x$, $F(y) \leq x$. \\
+Define $Z_x = \{ y \in P_0 | y \leq x \;or \;F(x) \leq y\}$.
+\begin{subclaim1} $Z_x = P_0$ \end{subclaim1}
+\begin{proof}
+First we show that $Z_x$ is a subCPO of $P$. \\
+Consider $\bot \in P$, since $P_0$ is a subCPO, $\bot \in P_0$ and for all $x \in P$, $\bot \leq x$, hence $\bot \in Z_x$. \\
+Let $D$ be a directed subset in $Z_x$, then $D$ is directed in $P$ and $P_0$. Therefore $\bigcup_p D$ exists and it is in $P_0$ since $P_0$ is a subCPO.\\
+Case 1: $\forall d \in D, d \leq x$, then $x$ is an upper bound for $D$, therefore $\bigsqcup_p D \leq x$ since $\bigsqcup_p D = \sup(D)$. \\
+Case 2: $\exists d_0 \in D$ such that $d_0 \nleq x$, then $d_0 \in Z_x$ implies $F(x) \leq d_0 \leq \bigsqcup_p D$ and $\bigsqcup_p D \in P_0$, therefore $\bigsqcup_p D \in Z_x$. \\
+To sum up, $\bigsqcup_p D \in Z_x$ and $\bot \in Z_x$ imply $Z_x$ is a subCPO of $P$.
+\end{proof}
+\begin{subclaim1} $Z_x$ is $F-invariant$. \end{subclaim1}
+\begin{proof}
+Let $y \in Z_x$, consider $F(y)$.\\
+Since $P_0$ is $F-invariant$, $F(x)$ is in $P_0$ for all $x \in P_0$, especially for $x$ being a roof element. Then \\
+Case 1: $x=y$, then $F(x) \leq F(y)$, therefore $F(y) \in Z_x$. \\
+Case 2: $x \neq y$, then $y \in Z_x$ implies $y < x$ or $F(x) \leq y$. If $y < x$, then since $F$ is increasing, we have $y \leq F(y)$, therefore $F(x) \leq y \leq F(y)$, hence $F(y) \in Z_x$. \\
+Therefore, $Z_x$ is $F-invariant$. \\
+We proved that $Z_x$ is an $F-invariant$ subCPO of $P$ and $Z_x \subseteq P_0$, but $P_0$ is the smallest $F-invariant$ subCPO of $P$, therefore $Z_x = P_0$.
+\end{proof}
+\begin{subclaim1} Define $Z = \{x \in P_0 | x \;is \;a \;roof\}$. Since $\bot \in Z$, $Z$ is not empty. Then $Z$ is $F-invariant$. \end{subclaim1}
+\begin{proof} Take $y \in P_0$ and $x \in Z$. Then $P_0 = Z_x$, hence we have either $y \leq x$ or $F(x) \leq y$. \\
+Suppose $y < x$, then $F(y) \leq x \leq F(x)$, hence $F(x)$ is a roof. Therefore, $Z$ is $F-invariant$.
+\end{proof}
+\begin{subclaim1} $Z$ is a subCPO of $P$ \end{subclaim1}
+\begin{proof}Let $x,y \in Z$, then $x,y$ are both roof elements, therefore  in particular, $Z_x = P_0$, since $y \in P_0$, we have either $y \leq x$ or $x \leq F(x) \leq F(y)$, therefore $Z$ is a chain. Hence $\bigsqcup_p Z$ exists in $P_0$.\\
+Let $D$ be a directed subset in $Z$, we need to show that $\bigsqcup_P D$ is in $Z$. \\
+Since $P$ is a CPO and $D$ is directed in $P$, we have $\bigsqcup_P D$ exists, moreover, $P_0$ is a subCPO $\Rightarrow$ $\bigsqcup_P D$ is in $P_0$.\\
+So suppose $D$ is non-empty, and let $y \in P_0$ such that $y < \bigsqcup_P D$, then for all $x \in Z$, we have either $y \leq x$ or $F(x) \leq y$.\\
+Case 1: there exists $x \in Z$ such that $y \leq x$, then $F(y) \leq x \leq \bigsqcup_P D$.\\
+Case 2: for all $x \in Z$, we have $F(x) \leq y$, then $x \leq F(x) \leq y$ implies $y$ is an upper bound for $D$, hence $\bigsqcup_P D \leq y\;\;\divideontimes$. \\
+Therefore, $\bigsqcup_P D$ is a roof element, then it is in $Z$. \\
+Thus, $Z$ is a subCPO of $P$.
+Therefore, $Z=P_0$. Hence $P_0$ is also a chain.
+\end{proof}
+\begin{subclaim1} $P_0$ has a top element. \end{subclaim1}
+\begin{proof}
+$P$ is a CPO and $P_0$ is a chain imply $\bigsqcup_p P_0$ exists in $P$. Also $P_0$ is a directed subset of $P_0$, then $\exists \top_{p_0} \in P_0$. And $\top_{p_0} = \bigsqcup_p P_0$.
+\end{proof}
+Now, $P_0$ is $F-invariant$ \\
+$\Rightarrow F(P_0) \subseteq P_0$ \\
+$\Rightarrow F(\top_{P_0}) \in P_0$ \\
+But $\top_{P_0} \leq F(\top_{P_0}) \leq \top_{P_0}$ \\
+$\therefore \top_{P_0} = F(\top_{P_0})$, hence it is a fixpoint of $F$.
+\end{proof}
+
+Note that: in this case we can not claim that $F$ has a least fixpoint,
+in fact, not even a minimal fixpoint. For example, consider the set
+$P=1\oplus\mathbb{N}^{\partial}$ and $F:P\rightarrow P$ such that
+$F(\bot)=0$, and $F(x)=x\;\forall x\in\mathbb{N}$. 
+
+\theoremstyle{definition}
+\newtheorem{kt1}[thm]{The Knaster-Tarski Theorem}
+\begin{kt1} Let $L$ be a complete lattice and $F:\, L \rightarrow L$ be an order-preserving self-map on $P$. Then $\alpha = \bigvee \{x \in L | x \leq F(x)\}$ is the greatest fixpoint of $F$. Dually, $F$ has  a least fixpoint given by $\bigwedge \{x \in L | F(x) \leq x\}$.
+\end{kt1}
+
+\begin{proof}
+Let $H=\{x\in L|\: x\leq F(x)\}$. Then for all $x\in H$ , we have
+$x\leq F(x)\leq F(\alpha)$, thus $F(\alpha)$ is a upper bound for
+$H$, and $\alpha\leq F(\alpha)$ since $\alpha$ is the least upper
+bound. 
+
+Now, $F$ is order-preserving, then $F(\alpha)\leq F(F(\alpha))$,
+which implies that $F(\alpha)\in H$, hence $F(\alpha)\leq\alpha$.
+Therefore $F(\alpha)=\alpha$, then $\alpha$ is a fixpoint. Suppose
+$x_{0}$ is a fixpoint of $F$, then $x_{0}\leq F(x_{0})=x_{0}$,
+therefore $x_{0}$ is in $H$. Hence $x_{0}\leq\alpha$.
+
+The proof for the Dual statement is similar.
+\end{proof}
+
+
+\begin{thm} Let $P$ be an partially ordered set.
+\begin{enumerate}
+\item If $P$ is a lattice and every order-preserving map $F:\,P \rightarrow P$ has a fixpoint, then $P$ is a complete lattice.
+\item If every order-preserving map $F:\,P \rightarrow P$ has a least fixpoint, then $P$ is a CPO.
+\end{enumerate}
+\end{thm}
+
+The proof for this theorem is quite complicated, it can be found in
+\cite{2}.
+
+
+\section{CPOs and Topology}
+
+\begin{defn} Let $X$ be a set and $\tau$ be a collection of subsets of $X$ such that
+\begin{enumerate}
+\item $X,\phi \in \tau$.
+\item arbitrary union of elements of $\tau$ is in $\tau$.
+\item finite intersection of elements of $\tau$ is in $\tau$.
+\end{enumerate}
+Then $\tau$ is called a topology on $X$ and $X$ is a topological space. A subset  $S$ of $X$ in $\tau$ is said to be open, a subset $F$ of $X$ is said to be closed if $\exists S \subseteq X$ and $S \in \tau$ such that $F=X \setminus S$.
+\end{defn}
+
+\begin{defn}
+Let $X,\, Y$ be topological spaces, and let $f:X\rightarrow Y$ be
+a map, then $f$ is said to be continuous if $f^{-1}(F)$ is closed
+in $X$ for all closed subsets $F$ of $Y$.
+\end{defn}
+
+
+\begin{thm} Let $P$ be a CPO. Let $\mathcal{F}$ be a collection of subsets $U$ of P such that $U \in O(P)$ and $\bigsqcup D \in U$ whenever $D$ is a directed subset of $U$. Then
+\begin{enumerate}
+\item $\mathcal{F}$ is a topology of $X$.
+\item Let $P$ and $Q$ be topologized as above. Then the map $\varphi : P \rightarrow Q$ is topologically continuous if and only if it is continuous in the CPO sense.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+Clearly, $\textrm{\O}\,\in\mathcal{F}$. Consider $\textrm{\O}\neq D\subseteq U$,
+let $D$ be directed in $U$.
+
+$P\in O(P)$ is trivial. Let $D\subseteq P$ be directed, since $P$
+is a CPO, $\sqcup D$ exists in $P$, hence $P\in\mathcal{F}$.
+
+Let $\Lambda$ be an index set and let $U_{\alpha}\in\mathcal{F}$
+for all $\alpha\in\Lambda$. Consider $\bigcap=\bigcap_{\alpha\in\Lambda}U_{\alpha}$.
+
+Let $x\in\bigcap$, $y\in P$ and $y<x$. Then 
+
+$x\in\bigcap\Rightarrow\forall\alpha\in\Lambda\,,x\in U_{\alpha}$
+
+$\Rightarrow y\in U_{\alpha}\;\forall\alpha\in\Lambda$ since $U_{\alpha}$
+are down-sets.
+
+Hence, $y\in\bigcap$. Therefore $\bigcap\in O(P)$.
+
+Let $D\subseteq\bigcap$ be directed, then
+
+$D\subseteq U_{\alpha}\;\forall\alpha\in\Lambda\Rightarrow\bigsqcup D\in U_{\alpha}\;\forall\alpha\;\Rightarrow\bigsqcup D\in\bigcap$.
+
+Hence, arbitrary intersections of $U_{\alpha}$ is still in $\mathcal{F}$.
+Now we shall prove that finite union of $U_{n}$ is still in $\mathcal{F}$.
+
+Let $x\in\bigcup_{n=1}^{N}$ and $y\leq x$, where $N\in\mathbb{N}$.
+
+$\Rightarrow\exists k\in\{1,2,\ldots,N\}$ such that $x\in U_{k}$
+$\Rightarrow\; y\in U_{k}\;\Rightarrow\; y\in\bigcup_{n=1}^{N}U_{n}$.
+
+Hence, $\bigcup_{n=1}^{N}U_{n}$ is a down-set.
+
+Let $D\subseteq\bigcup_{n=1}^{N}U_{n}$.
+
+Case 1: $\exists k\in\{1,2,\ldots,N\}$ such that $D\subseteq U_{k}$,
+then $\bigsqcup D\in\bigcup_{n=1}^{N}U_{n}$.
+
+Case 2: $\exists k_{1},k_{2}$ such that $U_{k_{1}}\bigcap D\neq\textrm{\O}$
+and $U_{k_{2}}\bigcap D\neq\textrm{\O}$.
+
+We shall prove that the second case is impossible.
+
+Consider $D\subseteq U_{1}\bigcup U_{2}=U_{1}\bigcup(U_{2}\setminus(U_{1}\bigcap U_{2}))$,
+$x,y\in U_{1}\bigcup U_{2}$ and $z\in\{x,y\}^{u}$.
+
+Consider $x,y\in U_{1}$ 
+
+Case 1: $z\in U_{1}$.
+
+Case 2: $z\in U_{2}\;\Rightarrow x,y\in U_{1}\bigcap U_{2}\;\Rightarrow x,y\in U_{2}$.
+
+Consider $x,y\in U_{2}\setminus(U_{1}\bigcap U_{2})$.
+
+Case 1: $z\in U_{1}\;\Rightarrow x,y\in U_{1}\;\;\divideontimes$.
+
+Case 2: $z\in U_{2}\;\Rightarrow x,y,z\in U_{2}$.
+
+If $x\in U_{1}$ and $y\in U_{2}\setminus(U_{1}\bigcap U_{2})$.
+
+Case 1: $z\in U_{1}\;\Rightarrow y\in U_{1}\;\;\divideontimes$.
+
+Case 2: $z\in U_{2}\;\Rightarrow x\in U_{2}\;\Rightarrow x\in U_{1}\bigcap U_{2}$.
+
+To sum up, $\forall x,y\in D,$ we have either $x,y\in U_{1}$ or
+$x,y\in U_{2}$.
+
+$\therefore$ either $D\subseteq U_{1}$ or $D\subseteq U_{2}$. 
+
+$\therefore\ U_{1}\bigcup U_{2}\in\mathcal{F}$.
+
+Suppose the above statement is true for $\bigcup_{n=1}^{k}U_{n}$
+for any $U_{n}\in\mathcal{F}$, consider $\bigcup_{n=1}^{k+1}U_{n}$. 
+
+Let $D$ be a directed subset of $\bigcup_{n=1}^{k+1}U_{n}$, since
+$\bigcup_{n=1}^{k}U_{n}$ and $U_{k+1}$ are both in $\mathcal{F}$,
+by induction hypothesis, we have either $D\subseteq\bigcup_{n=1}^{k}U_{n}$
+or $D\subseteq U_{k+1}$, therefore $\bigsqcup D\in\bigcup_{n=1}^{k+1}U_{n}$,
+which implies it is in $\mathcal{F}$ .
+
+Hence, finite unions of $U_{n}$ is still in $\mathcal{F}$ .
+
+Therefore, $\mathcal{F}$ is a topology on $P$. In fact, it is called
+the Scott topology.
+
+Now we prove the second theorem.
+
+Say $\varphi:P\rightarrow Q$ is topologically continuous.
+
+Let $x,y\in P$ such that $x\leq y$. And $\varphi(x),\varphi(y)\in Q$.
+
+Consider $\downarrow\varphi(y)\subseteq Q$. It is a down-set and
+let $D$ be a directed subset of it, then by definition $\varphi(y)$
+is an upper bound for $D$, hence $\bigsqcup D\leq\varphi(y)\Rightarrow\bigsqcup D\in\downarrow\varphi(y)$.
+Therefore, it is in $\mathcal{F_{Q}}$.
+
+Since $\varphi$ is topologically continuous, $\varphi^{-1}(\varphi(y))\in\mathcal{F_{P}}$. 
+
+$y\in\varphi^{-1}(\varphi(y))\;\Rightarrow x\leq y\in\varphi^{-1}(\varphi(y))$.
+
+$\Rightarrow\varphi(x)\in\downarrow\varphi(y)$
+
+$\Rightarrow\varphi(x)\leq\varphi(y)$
+
+$\therefore$ $\varphi$ is order-preserving.
+
+Let $S\subseteq P$ be directed, since $\varphi$ is order-preserving,
+we have $\varphi(S)$ is directed in $Q$ and $\bigsqcup\varphi(S)\leq\varphi(\bigsqcup S)$.
+
+Now consider $S\subseteq F=\varphi^{-1}(\downarrow\bigsqcup\varphi(S))\subseteq P$,
+if $F$ is empty, then $S$ is also empty, hence $\bigsqcup\varphi(\textrm{\O})=\varphi(\bigsqcup\textrm{\O})=\bot_{Q}$.
+
+If $F$ is non-empty, then $F$ is in $\mathcal{F_{P}}$ since $\varphi$
+is topologically continuous, then $\bigsqcup S$ exists in $F$. Hence,
+$\varphi(\bigsqcup S)\in\downarrow\bigsqcup\varphi(S)$. 
+
+Therefore $\varphi(\bigsqcup S)\leq\bigsqcup\varphi(S)\;\Rightarrow\varphi(\bigsqcup S)=\bigsqcup\varphi(S)$. 
+
+Hence $\varphi$ is continuous in the CPO sense.
+
+Conversely, say $\varphi$ is continuous in the CPO sense, then $\varphi$
+is order-preserving. 
+
+Let $U\in\mathcal{F_{Q}}$, consider $\varphi^{-1}(U)\subseteq P$.
+
+Let $x\in\varphi^{-1}(U)$, $y\in P$ and $y\leq x$. Since $\varphi$
+is order-preserving, we have $\varphi(y)\leq\varphi(x)$. But $\varphi(x)\in U\in O(Q)$,
+therefore $\varphi(y)\in U$, hence $y\in\varphi^{-1}(U)$. 
+
+Therefore $\varphi^{-1}(U)$ is a down-set.
+
+Let $D$ be a directed subset of $\varphi^{-1}(U)$. Consider $\varphi(\bigsqcup D)=\bigsqcup\varphi(D)$.
+
+Since $D\subseteq\varphi^{-1}(U)$ and $D$ is directed, we have $\varphi(D)\subseteq U$
+and $\varphi(D)$ is directed. Therefore $\bigsqcup\varphi(D)$ exists
+in $U$. Hence, $\bigsqcup D$ exists in $\varphi^{-1}(U)$.
+
+Therefore, $\varphi^{-1}(U)\in\mathcal{F_{P}}$. So $\varphi$ is
+topologically continuous.
+\end{proof}
+
+
+\begin{thebibliography}{1}
+\bibitem{1}Introduction to lattices and order, 2nd Edition, B. A.
+Davey and H. A. Priestley.
+
+\bibitem{2}Chain-complete posets and directed sets with applications,
+Algebra Universalis 6 (1976), 53-68. G. Markowsky.
+\end{thebibliography}
+
+\end{document}

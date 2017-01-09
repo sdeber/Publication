@@ -1,0 +1,210 @@
+thead:2
+ start outputting on Channel 1
+thead:3
+ start outputting on Channel 2
+thead:4
+ start outputting on Channel 3
+thead:5
+ start outputting on Channel 4
+thead:1
+ start outputting on Channel 0
+thead:6
+ start outputting on Channel 5
+thead:7
+ start outputting on Channel 6
+thead:8
+ start outputting on Channel 7
+thead:9
+ start outputting on Channel 8
+thead:10
+ start outputting on Channel 9
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+48
+48
+48
+48
+48
+48
+48
+48
+48
+48
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+49
+49
+49
+49
+49
+49
+49
+49
+49
+49
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+50
+thead:1
+ finish outputting
+thead:2
+ finish outputting
+50thead:3
+ finish outputting
+
+50
+50
+50
+50
+50
+50
+50
+50
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+51
+51
+51
+51
+51
+51
+51
+51
+51
+51
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+52
+52
+52
+52
+52
+52
+52
+52
+52
+52
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+53
+53
+53
+53
+53
+53
+53
+53thead:4
+ finish outputting
+thead:5
+ finish outputting
+
+thead:6
+ finish outputting
+53
+53
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+54
+54
+54
+54
+54
+54
+54
+54
+54
+54
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+55
+55
+55
+55
+55
+55
+55
+55
+55
+55
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+Copying message
+56
+56
+56
+56
+56
+56
+56
+56
+56
+56
+Thread:11 starts inputting
+Enabling channels
+Chan_num 10
+thead:7
+ finish outputting
+thead:8
+ finish outputting
+Starting ALT waiting
+Disabling channels
+Chan_num 10
+thead:9
+ finish outputting
+Copying message
+57
+57
+57
+57
+57
+57
+57
+57
+57
+57
+thead:10
+ finish outputting

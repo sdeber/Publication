@@ -1,0 +1,1 @@
+tar zcvf /tmp/fine.tgz *.c *.i *.h  backup makefile examples/*.c examples/makefile examples/*.h benchmarks/*.c benchmarks/makefile
